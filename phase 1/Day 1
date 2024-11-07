@@ -2,7 +2,7 @@
 
 function sumOfDigits(num) 
 	initialize sum=0 
-	while(n>0) 
+	while(num>0) 
 		sum+=n%10 
 		num=num/10
 	return sum
