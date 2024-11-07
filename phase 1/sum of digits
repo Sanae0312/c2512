@@ -8,5 +8,5 @@ function sumOfDigits(num)
 	return sum
 main method
 	input number
-	sumOfDigits(num)
+	sum=sumOfDigits(num)
 	print sum
