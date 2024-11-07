@@ -1,0 +1,40 @@
+//pseudocode
+
+pseudofunction:
+
+function printNaturalNumbers(n->int)->int
+    for i = 1..n
+        print i
+    End for
+
+function printNaturalNUmbersTest()
+    input n
+    printNaturalNumbers(n)
+
+pseudocode:
+
+printNaturalNUmbersTest()
+
+
+//C++ code
+
+#include <iostream>
+using namespace std;
+void printNaturalNUmbers(int n)
+{
+    int i;
+    for(i=1;i<=n;i++)
+        cout << i << endl;
+}
+void printNaturalNUmbersTest()
+{
+    int n;
+    cout << "Enter number: ";
+    cin >> n;
+    printNaturalNUmbers(n);
+}
+int main()
+{
+    printNaturalNUmbersTest();
+    return 0;
+}
