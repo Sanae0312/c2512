@@ -1,0 +1,23 @@
+function ispalindrome(str)
+        initialize flag = True
+        initialize left = 0                 //start pointer at the beginning of the string
+        initialize right = length of str-1  //end pointer at last charecter
+        while left < right
+                if str[left] != str[right]
+                        flag = False
+                        break
+                End if
+        increment left                       //move the pointer to right
+        decrement right                      //move the pointer to left
+        End while
+        return flag
+End function
+
+main method
+        input str
+        result = ispalindrome(str)
+        if result is True
+                print string is a palindrome
+        else
+                print string is not a palindrome
+                
