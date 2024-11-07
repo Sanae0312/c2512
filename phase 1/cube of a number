@@ -1,0 +1,37 @@
+pseudofunction:
+
+function calculateCube(number->int)->int
+    return number*number*number
+  
+function calculateCubeTest()
+    input number
+    result=calculateCube(number)
+    print result
+End function
+
+pseudocode:
+
+calculateCubeTest()
+
+
+  //C++ code
+
+#include <iostream>
+using namespace std;
+int calculateCube(int number)
+{
+    return number*number*number;
+}
+void calculateCubeTest()
+{
+    int number,result;
+    cout << "Enter a number: ";
+    cin >> number;
+    result = calculateCube(number);
+    cout << "The cube of the number is: "<< result << endl;
+}
+int main()
+{
+    calculateCubeTest();
+    return 0;
+}
