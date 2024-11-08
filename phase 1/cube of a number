@@ -1,11 +1,11 @@
 pseudofunction:
 
-function calculateCube(number->int)->int
-    return number*number*number
+function calculateCube(number -> int) -> int
+    return number * number * number
   
 function calculateCubeTest()
     input number
-    result=calculateCube(number)
+    result = calculateCube(number)
     print result
 End function
 
@@ -17,21 +17,25 @@ calculateCubeTest()
   //C++ code
 
 #include <iostream>
-using namespace std;
+using std::cout;
+using std::cin;
 int calculateCube(int number)
 {
-    return number*number*number;
+    return number * number * number;
 }
-void calculateCubeTest()
+void calculateCubeTest(void)
 {
     int number,result;
+
     cout << "Enter a number: ";
     cin >> number;
+
     result = calculateCube(number);
     cout << "The cube of the number is: "<< result << endl;
 }
-int main()
+int main(void)
 {
     calculateCubeTest();
+
     return 0;
 }
