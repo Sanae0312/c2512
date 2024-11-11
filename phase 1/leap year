@@ -1,0 +1,54 @@
+//pseudocode
+
+pseudofunctions :
+
+function isLeapYear(year -> int) -> bool
+        return ((year % 4 == 0 && year % 100 !=0) || (year % 400 == 0))
+           
+function isLeapYearTest()
+        input year
+        if (isLeapYear(year))
+           print "Leap Year"
+        else
+           print "Not Leap Year"
+        end if
+
+pseudocode :
+
+isLeapYearTest()
+
+
+//c++ code
+
+#include <iostream>
+using std::cout;
+using std::cin;
+
+bool isLeapYear(int year)
+{
+    return ((((year % 4) == 0) && ((year % 100) !=0)) || ((year % 400) == 0)));
+}
+        
+void isLeapYearTest(void)
+{
+   int year;
+   
+   cout << "Enter Year: "; 
+   cin >> year;
+   
+   if (isLeapYear(year))
+   {
+       cout << year << " is Leap Year";
+   }
+   else
+   {
+       cout << year << " Not Leap Year";
+   }
+}
+
+int main(void)
+{
+    isLeapYearTest();
+    
+    return 0;
+}
