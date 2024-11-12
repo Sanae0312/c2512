@@ -1,0 +1,96 @@
+//pseudocode
+
+pseudo function:
+
+function readNumberFromUser(number -> int) -> int
+
+function findAverage(number -> int) -> int
+    sum = 0 -> int
+    average = 0 -> float
+    max_salary = INT_MIN
+    print "Enter the salaries"
+    for i = 0...number - 1
+        input salary
+        sum = sum + salary
+        if (salary > max_salary)
+            max_salary = salary
+    end for
+    average = sum / number
+    return average
+
+function test()
+    input number
+    print average salary 
+    print max_salary
+
+pseudo main()
+
+test()
+
+    
+
+//c++ code
+
+#include<iostream>
+#include<climits>
+using std::cout;
+using std::cin;
+using std::endl;
+
+int readSalaries(int number)
+{
+    
+}
+
+int findAverage(int number)
+{
+    int salary;
+    int sum = 0;
+    float average = 0;
+    cout << "Enter the salaries: ";
+    for (int i = 0 ; i < number ; i++)
+    {
+        cin >> salary;
+        sum = sum + salary;
+    }
+    average = sum / number;
+    return average;
+}
+
+int findMaximumSalary(int number)
+{
+    int salary;
+    int max_salary = INT_MIN;
+    cout << "Enter the salaries: ";
+    for (int i = 0 ; i < number ; i++)
+    {
+        cin >> salary;
+        if (salary > max_salary)
+        {
+            max_salary = salary;
+        }
+    }
+    return max_salary;
+}
+
+void test(void)
+{
+    int number;
+    float average_salary;
+    cout << "Enter the number of salaries: ";
+    cin >> number;
+    average_salary = findAverage(number);
+    cout << "Average salary is: " << average_salary << endl;
+    int maximum_salary = findMaximumSalary(number);
+    cout << "Maximum salary is: " << maximum_salary ;
+}
+
+int main(void)
+{
+    test();
+    
+    return 0;
+}
+
+  
+  
