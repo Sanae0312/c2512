@@ -90,9 +90,10 @@ function find2ndMinOddSalary(salaries -> [int], size -> int) -> int
     	for I = 0 to size - 1
  		if (isOdd(salaries[i]))
             		if (minsalary > salaries[i])
-                		second_min_salary = minsalary;
-                		minsalary = salaries[i];
+                		second_min_salary = minsalary
+                		minsalary = salaries[i]
 			end if
+			second_min_salary = salaries[i]
 		end if
 	end for
   
