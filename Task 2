@@ -4,10 +4,10 @@ pseudo function:
 
 function readNumberFromUser(number -> int) -> int
 
-function findAverage(number -> int) -> int
+function findAverageAndMaxSalary(number -> int) -> int
     sum = 0 -> int
     average = 0 -> float
-    max_salary = INT_MIN
+    max_salary = INT_MIN -> int
     print "Enter the salaries"
     for i = 0...number - 1
         input salary
@@ -16,16 +16,30 @@ function findAverage(number -> int) -> int
             max_salary = salary
     end for
     average = sum / number
-    return average
+    print "Enter your choice (1. Average, 2. Max_salary): "
+    input choice;
+    switch (choice)
+        case 1:
+            print "Average is: " 
+            break;
+        case 2:
+            print "Maximum salary is: " 
+            break;
+        case 3:
+            print "Average is: " 
+            print "Maximum salary is: " 
+            break;
+        default:
+            print "invalid"
+    end switch
 
-function test()
+function findAverageAndMaxSalaryTest()
     input number
-    print average salary 
-    print max_salary
+    findAverageAndMaxSalary()
 
-pseudo main()
+pseudo main():
 
-test()
+findAverageAndMaxSalaryTest()
 
     
 
@@ -33,11 +47,11 @@ test()
 
 #include<iostream>
 #include<climits>
+#include<cstdlib>
+
 using std::cout;
 using std::cin;
 using std::endl;
-
-
 
 void findAverageAndMaxSalary(int number)
 {
@@ -96,7 +110,7 @@ int main(void)
 {
     findAverageAndMaxSalaryTest();
     
-    return 0;
+    return EXIT_SUCCESS;
 }
 
 
