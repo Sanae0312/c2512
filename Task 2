@@ -2,8 +2,6 @@
 
 pseudo function:
 
-function readNumberFromUser(number -> int) -> int
-
 function findAverageAndMaxSalary(number -> int) -> int
     sum = 0 -> int
     average = 0 -> float
