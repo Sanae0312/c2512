@@ -13,7 +13,7 @@ Given UNF  :
 
 Formed 1NF :
 
-Customers : CustomerID, Customer_Name, ContactNumber, Email, RegisteredDate
+Customers : CustomerID, Customer_Name, ContactNumber, Email
 Bus Details : BusID, BusNumber, BusType
 Bus Route : RouteID, StartLocation, EndLocation, Distance
 Bus Schedules : ScheduleID, BusID, RouteID, DepartureTime, ArrivalTime
