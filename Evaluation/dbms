@@ -13,7 +13,7 @@ Given UNF  :
 
 Formed 1NF :
 
-Customers : CustomerID, Customer_Name, ContactNumber, Email
+Customers : CustomerID, Customer_Name, ContactNumber, Email, Registered_date
 Bus Details : BusID, BusNumber, BusType
 Bus Route : RouteID, StartLocation, EndLocation, Distance
 Bus Schedules : ScheduleID, BusID, RouteID, DepartureTime, ArrivalTime
@@ -45,6 +45,7 @@ CREATE TABLE Customers (
     Customer_Name VARCHAR(50),
     ContactNumber VARCHAR(15),
     Email VARCHAR(100) 
+    RegisteredDate DAte
 );
 
 
@@ -113,20 +114,20 @@ CREATE TABLE Payments
 
 --insert data into customers table
 
-INSERT INTO Customers (CustomerID, Customer_Name, ContactNumber, Email)
-VALUES (1, 'Nimisha ', '555-1234', 'nimisha@example.com', TO_DATE('2024-11-01');
+INSERT INTO Customers (CustomerID, Customer_Name, ContactNumber, Email, RegisteredDate)
+VALUES (1, 'Nimisha ', '555-1234', 'nimisha@example.com', TO_DATE('2024-11-01', 'YYYY-MM-DD'));
 
-INSERT INTO Customers (CustomerID, Customer_Name, ContactNumber, Email) 
-VALUES(2, 'Ayisha', '555-5678', 'ayisha@example.com', TO_DATE('2024-10-15');
+INSERT INTO Customers (CustomerID, Customer_Name, ContactNumber, Email, RegisteredDate) 
+VALUES(2, 'Ayisha', '555-5678', 'ayisha@example.com', TO_DATE('2024-10-15', 'YYYY-MM-DD'));
 
-INSERT INTO Customers (CustomerID, Customer_Name, ContactNumber, Email) 
-VALUES(3, 'Sana', '555-8765', 'sana@example.com', TO_DATE('2024-09-20');
+INSERT INTO Customers (CustomerID, Customer_Name, ContactNumber, Email, RegisteredDate) 
+VALUES(3, 'Sana', '555-8765', 'sana@example.com', TO_DATE('2024-09-20', 'YYYY-MM-DD'));
 
-INSERT INTO Customers (CustomerID, Customer_Name, ContactNumber, Email) 
-VALUES(4, 'Vinayak', '555-4321', 'vinayak@example.com');
+INSERT INTO Customers (CustomerID, Customer_Name, ContactNumber, Email, RegisteredDate) 
+VALUES(4, 'Vinayak', '555-4321', 'vinayak@example.com', TO_DATE('2024-08-05' , 'YYYY-MM-DD'));
 
-INSERT INTO Customers (CustomerID, Customer_Name, ContactNumber, Email) 
-VALUES (5, 'Vishakh', '555-7890', 'vishakh@example.com');
+INSERT INTO Customers (CustomerID, Customer_Name, ContactNumber, Email, RegisteredDate) 
+VALUES (5, 'Vishakh', '555-7890', 'vishakh@example.com', TO_DATE('2024-11-10', 'YYYY-MM-DD'));
 
 
 --insert data into Bus_details table
@@ -223,13 +224,13 @@ Tabular Data Representation
 
 Customer Table 
 
-CustomerID | Customer_Name | ContactNumber | Email                   
---------------------------------------------------------------------
-1          | Nimisha      | 555-1234      | nimisha@example.com     
-2          | Ayisha       | 555-5678      | ayisha@example.com      
-3          | Sana         | 555-8765      | sana@example.com       
-4          | Vinayak      | 555-4321      | vinayak@example.com     
-5          | Vishakh      | 555-7890      | vishakh@example.com     
+CustomerID | Customer_Name | ContactNumber | Email                  | RegisteredDate
+----------------------------------------------------------------------------------------
+1          | Nimisha      | 555-1234      | nimisha@example.com     | 2024-11-01
+2          | Ayisha       | 555-5678      | ayisha@example.com      | 2024-10-15
+3          | Sana         | 555-8765      | sana@example.com        | 2024-09-20
+4          | Vinayak      | 555-4321      | vinayak@example.com     | 2024-08-05
+5          | Vishakh      | 555-7890      | vishakh@example.com     | 2024-11-10
 
 
 Bus_Details Table 
