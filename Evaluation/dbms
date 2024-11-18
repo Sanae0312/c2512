@@ -44,8 +44,7 @@ CREATE TABLE Customers (
     CustomerID INT  PRIMARY KEY ,
     Customer_Name VARCHAR(50),
     ContactNumber VARCHAR(15),
-    Email VARCHAR(100),
-    RegisteredDate DATE 
+    Email VARCHAR(100) 
 );
 
 
@@ -114,20 +113,20 @@ CREATE TABLE Payments
 
 --insert data into customers table
 
-INSERT INTO Customers (CustomerID, Customer_Name, ContactNumber, Email, RegisteredDate)
-VALUES (1, 'Nimisha ', '555-1234', 'nimisha@example.com', TO_DATE('2024-11-01' , 'YYYY-MM-DD'));
+INSERT INTO Customers (CustomerID, Customer_Name, ContactNumber, Email)
+VALUES (1, 'Nimisha ', '555-1234', 'nimisha@example.com', TO_DATE('2024-11-01');
 
-INSERT INTO Customers (CustomerID, Customer_Name, ContactNumber, Email, RegisteredDate) 
-VALUES(2, 'Ayisha', '555-5678', 'ayisha@example.com', TO_DATE('2024-10-15' , 'YYYY-MM-DD'));
+INSERT INTO Customers (CustomerID, Customer_Name, ContactNumber, Email) 
+VALUES(2, 'Ayisha', '555-5678', 'ayisha@example.com', TO_DATE('2024-10-15');
 
-INSERT INTO Customers (CustomerID, Customer_Name, ContactNumber, Email, RegisteredDate) 
-VALUES(3, 'Sana', '555-8765', 'sana@example.com', TO_DATE('2024-09-20' , 'YYYY-MM-DD'));
+INSERT INTO Customers (CustomerID, Customer_Name, ContactNumber, Email) 
+VALUES(3, 'Sana', '555-8765', 'sana@example.com', TO_DATE('2024-09-20');
 
-INSERT INTO Customers (CustomerID, Customer_Name, ContactNumber, Email, RegisteredDate) 
-VALUES(4, 'Vinayak', '555-4321', 'vinayak@example.com', TO_DATE('2024-08-05' , 'YYYY-MM-DD'));
+INSERT INTO Customers (CustomerID, Customer_Name, ContactNumber, Email) 
+VALUES(4, 'Vinayak', '555-4321', 'vinayak@example.com');
 
-INSERT INTO Customers (CustomerID, Customer_Name, ContactNumber, Email, RegisteredDate) 
-VALUES (5, 'Vishakh', '555-7890', 'vishakh@example.com', TO_DATE('2024-11-10', 'YYYY-MM-DD'));
+INSERT INTO Customers (CustomerID, Customer_Name, ContactNumber, Email) 
+VALUES (5, 'Vishakh', '555-7890', 'vishakh@example.com');
 
 
 --insert data into Bus_details table
@@ -224,13 +223,13 @@ Tabular Data Representation
 
 Customer Table 
 
-CustomerID | Customer_Name | ContactNumber | Email                   | RegisteredDate
-----------------------------------------------------------------------------------------
-1          | Nimisha      | 555-1234      | nimisha@example.com     | 2024-11-01
-2          | Ayisha       | 555-5678      | ayisha@example.com      | 2024-10-15
-3          | Sana         | 555-8765      | sana@example.com        | 2024-09-20
-4          | Vinayak      | 555-4321      | vinayak@example.com     | 2024-08-05
-5          | Vishakh      | 555-7890      | vishakh@example.com     | 2024-11-10
+CustomerID | Customer_Name | ContactNumber | Email                   
+--------------------------------------------------------------------
+1          | Nimisha      | 555-1234      | nimisha@example.com     
+2          | Ayisha       | 555-5678      | ayisha@example.com      
+3          | Sana         | 555-8765      | sana@example.com       
+4          | Vinayak      | 555-4321      | vinayak@example.com     
+5          | Vishakh      | 555-7890      | vishakh@example.com     
 
 
 Bus_Details Table 
@@ -248,11 +247,11 @@ Bus_Route Table
 
 RouteID | Start_Location | End_Location | Distance
 ---------------------------------------------------
-40      | Ernakulam     | Kannur      | 165
-42      | Kozhikode     | Ernakulam   | 80
-44      | Trivandrum    | Palakkad    | 135
-46      | Trissur       | Malappuram  | 30
-48      | Kasargod      | Wayanad     | 75
+40      | Ernakulam     | Kannur      | 200
+42      | Kozhikode     | Ernakulam   | 180
+44      | Trivandrum    | Palakkad    | 250
+46      | Trissur       | Malappuram  | 50
+48      | Kasargod      | Wayanad     | 150
 
 
 Bus_Schedule  Table 
