@@ -1,7 +1,7 @@
 Given UNF  : 
 
     booking_id ,seat_number ,bus_id,bus_number,bus_type, scheduleid
-    route_start_location,route_end_location, departure_time ,arrival_time ,departure_location, arrival_location,distance
+    route_start_location,route_end_location, departure_time ,arrival_time,distance
     customer_id ,customer_name ,contact_number,Email_id
     payment_id, payment_mode, amount.
 
@@ -16,7 +16,7 @@ Formed 1NF :
 Customers : CustomerID, Customer_Name, ContactNumber, Email, RegisteredDate
 Bus Details : BusID, BusNumber, BusType
 Bus Route : RouteID, StartLocation, EndLocation, Distance
-Bus Schedules : ScheduleID, BusID, RouteID, DepartureTime, ArrivalTime, DepartureLocation, ArrivalLocation
+Bus Schedules : ScheduleID, BusID, RouteID, DepartureTime, ArrivalTime
 Bus Bookings : BookingID, CustomerID, ScheduleID, SeatNumber, BookingDate, Status
 Bus Payments : PaymentID, BookingID, Amount, PaymentMethod, PaymentDate
 
