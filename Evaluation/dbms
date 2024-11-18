@@ -1,7 +1,7 @@
 Given UNF  : 
 
     booking_id ,booking_number ,bus_id,bus_number,bus_type,
-    route_start_location,route_end_location, departure_time ,arrival_time ,departure_location, arrival_location
+    route_start_location,route_end_location, departure_time ,arrival_time ,departure_location, arrival_location,distance
     customer_id ,customer_name ,contact_number,Email_id
     payment_id, payment_mode, amount.
 
@@ -170,20 +170,20 @@ VALUES (48, 'Kasargod', 'Wayanad',75);
 
 --insert data into Bus_Schedules table
 
-INSERT INTO Bus_Schedules (BusID, RouteID, DepartureTime, ArrivalTime, DepartureLocation, ArrivalLocation) 
-VALUES (101, 40, TO_DATE('2024-11-20 08:00:00', 'YYYY-MM-DD HH24:MI:SS'), TO_DATE('2024-11-20 12:00:00', 'YYYY-MM-DD HH24:MI:SS'), 'Trivandrum', 'Kozhikode');
+INSERT INTO Bus_Schedules (ScheduleID, BusID, RouteID, DepartureTime, ArrivalTime, DepartureLocation, ArrivalLocation) 
+VALUES (501, 101, 40, TO_DATE('2024-11-20 08:00:00', 'YYYY-MM-DD HH24:MI:SS'), TO_DATE('2024-11-20 12:00:00', 'YYYY-MM-DD HH24:MI:SS'), 'Trivandrum', 'Kozhikode');
 
-INSERT INTO Bus_Schedules (BusID, RouteID, DepartureTime, ArrivalTime, DepartureLocation, ArrivalLocation) 
-VALUES (102, 42, TO_DATE('2024-11-21 09:30:00', 'YYYY-MM-DD HH24:MI:SS'), TO_DATE('2024-11-21 13:30:00', 'YYYY-MM-DD HH24:MI:SS'), 'Ernakulam', 'Varkala');
+INSERT INTO Bus_Schedules (ScheduleID, BusID, RouteID, DepartureTime, ArrivalTime, DepartureLocation, ArrivalLocation) 
+VALUES (511, 102, 42, TO_DATE('2024-11-21 09:30:00', 'YYYY-MM-DD HH24:MI:SS'), TO_DATE('2024-11-21 13:30:00', 'YYYY-MM-DD HH24:MI:SS'), 'Ernakulam', 'Varkala');
 
-INSERT INTO Bus_Schedules (BusID, RouteID, DepartureTime, ArrivalTime, DepartureLocation, ArrivalLocation) 
-VALUES(103, 44, TO_DATE('2024-11-22 07:00:00', 'YYYY-MM-DD HH24:MI:SS'), TO_DATE('2024-11-22 11:00:00', 'YYYY-MM-DD HH24:MI:SS'), 'Kasargod', 'Malapuram');
+INSERT INTO Bus_Schedules (ScheduleID, BusID, RouteID, DepartureTime, ArrivalTime, DepartureLocation, ArrivalLocation) 
+VALUES(521, 103, 44, TO_DATE('2024-11-22 07:00:00', 'YYYY-MM-DD HH24:MI:SS'), TO_DATE('2024-11-22 11:00:00', 'YYYY-MM-DD HH24:MI:SS'), 'Kasargod', 'Malapuram');
 
-INSERT INTO Bus_Schedules ( BusID, RouteID, DepartureTime, ArrivalTime, DepartureLocation, ArrivalLocation) 
-VALUES (104, 46, TO_DATE('2024-11-23 10:15:00', 'YYYY-MM-DD HH24:MI:SS'), TO_DATE('2024-11-23 14:15:00', 'YYYY-MM-DD HH24:MI:SS'), 'Kannur', 'Kollam');
+INSERT INTO Bus_Schedules (ScheduleID, BusID, RouteID, DepartureTime, ArrivalTime, DepartureLocation, ArrivalLocation) 
+VALUES (531, 104, 46, TO_DATE('2024-11-23 10:15:00', 'YYYY-MM-DD HH24:MI:SS'), TO_DATE('2024-11-23 14:15:00', 'YYYY-MM-DD HH24:MI:SS'), 'Kannur', 'Kollam');
 
-INSERT INTO Bus_Schedules (BusID, RouteID, DepartureTime, ArrivalTime, DepartureLocation, ArrivalLocation) 
-VALUES (105, 48, TO_DATE('2024-11-24 06:30:00', 'YYYY-MM-DD HH24:MI:SS'), TO_DATE('2024-11-24 10:30:00', 'YYYY-MM-DD HH24:MI:SS'), 'Alapuzha', 'Kottayam');
+INSERT INTO Bus_Schedules (ScheduleID, BusID, RouteID, DepartureTime, ArrivalTime, DepartureLocation, ArrivalLocation) 
+VALUES (541, 105, 48, TO_DATE('2024-11-24 06:30:00', 'YYYY-MM-DD HH24:MI:SS'), TO_DATE('2024-11-24 10:30:00', 'YYYY-MM-DD HH24:MI:SS'), 'Alapuzha', 'Kottayam');
 
 
 --insert data into Bookings table
@@ -226,7 +226,7 @@ Tabular Data Representation
 
 Customer Table 
 
-CustomerID | CustomerName | ContactNumber | Email                   | RegisteredDate
+CustomerID | Customer_Name | ContactNumber | Email                   | RegisteredDate
 ----------------------------------------------------------------------------------------
 1          | Nimisha      | 555-1234      | nimisha@example.com     | 2024-11-01
 2          | Ayisha       | 555-5678      | ayisha@example.com      | 2024-10-15
@@ -248,7 +248,7 @@ BusID | BusNumber | Type
 
 Bus_Route Table 
 
-RouteID | StartLocation | EndLocation | Distance
+RouteID | Start_Location | End_Location | Distance
 ---------------------------------------------------
 40      | Ernakulam     | Kannur      | 165
 42      | Kozhikode     | Ernakulam   | 80
@@ -301,7 +301,7 @@ UPDATE customers SET aadhaar_id = '5553 8418' WHERE CustomerID = 3;
 UPDATE customers SET aadhaar_id = '5553 8419' WHERE CustomerID = 4;
 UPDATE customers SET aadhaar_id = '5553 8420' WHERE CustomerID = 5;
 
-| CustomerID | CustomerName | ContactNumber | Email                   | RegisteredDate | aadhaar_id 
+| CustomerID | Customer_Name | ContactNumber | Email                   | RegisteredDate | aadhaar_id 
 |------------|--------------|---------------|-------------------------|----------------|------------
 | 1          | Nimisha      | 555-1234      | nimisha@example.com     | 2024-11-01     | 5553 8416  
 | 2          | Ayisha       | 555-5678      | ayisha@example.com      | 2024-10-15     | 5553 8417  
@@ -312,8 +312,8 @@ UPDATE customers SET aadhaar_id = '5553 8420' WHERE CustomerID = 5;
 
 1. Find the name and contact number of customers who booked seats but didn't make a payment.
 
-SELECT CustomerName, ContactNumber 
-FROM Customer 
+SELECT Customer_Name, ContactNumber 
+FROM Customers 
 WHERE CustomerID IN (
     SELECT CustomerID 
     FROM Bookings 
@@ -326,18 +326,18 @@ SELECT BusNumber, Type
 FROM Bus_Details 
 WHERE BusID IN (
     SELECT BusID 
-    FROM Bus_Schedule 
+    FROM Bus_Schedules 
     WHERE DepartureLocation = 'Ernakulam'
 );
 
 3. Find the name of customers who booked seats and their total payment amount.
 
-SELECT CustomerName, 
+SELECT Customer_Name, 
        (SELECT SUM(Amount) 
         FROM Payments 
         WHERE Payments.BookingID = Bookings.BookingID) AS TotalAmount
-FROM Customer 
-JOIN Bookings ON Customer.CustomerID = Bookings.CustomerID;
+FROM Customers
+JOIN Bookings ON Customers.CustomerID = Bookings.CustomerID;
 
 
 4. List all bookings with 'Booked' status where the payment amount exceeds 150.
@@ -353,8 +353,8 @@ AND EXISTS (
 
 5. Get the list of customers who have made payments, along with their payment details.
 
-SELECT c.CustomerName, c.ContactNumber, p.Amount, p.PaymentMethod, p.PaymentDate 
-FROM Customer c 
+SELECT c.Customer_Name, c.ContactNumber, p.Amount, p.PaymentMethod, p.PaymentDate 
+FROM Customers c 
 JOIN Bookings b ON c.CustomerID = b.CustomerID
 JOIN Payments p ON b.BookingID = p.BookingID;
 
@@ -362,15 +362,15 @@ JOIN Payments p ON b.BookingID = p.BookingID;
 6. Show the details of all bus schedules, including the bus type.
 
 SELECT s.ScheduleID, s.DepartureTime, s.ArrivalTime, s.DepartureLocation, s.ArrivalLocation, b.Type 
-FROM Bus_Schedule s 
+FROM Bus_Schedules s 
 INNER JOIN Bus_Details b ON s.BusID = b.BusID;
 
 
 7. Display bookings that are 'Not Booked' along with customer and route information.
 
-SELECT c.CustomerName, r.StartLocation, r.EndLocation, s.DepartureTime, s.ArrivalTime 
+SELECT c.Customer_Name, r.Start_Location, r.End_Location, s.DepartureTime, s.ArrivalTime 
 FROM Bookings b
-JOIN Customer c ON b.CustomerID = c.CustomerID
-JOIN Bus_Schedule s ON b.ScheduleID = s.ScheduleID
-JOIN Bus_Route r ON s.RouteID = r.RouteID
+JOIN Customers c ON b.CustomerID = c.CustomerID
+JOIN Bus_Schedules s ON b.ScheduleID = s.ScheduleID
+JOIN Bus_Routes r ON s.RouteID = r.RouteID
 WHERE b.BookingStatus = 'Not Booked';
