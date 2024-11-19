@@ -1,0 +1,51 @@
+//String length
+
+//pseudocode
+
+pseudo functions:
+
+function findStringLength(str -> string&) -> int
+	return str.length()
+	
+function findStringLengthTest()
+	input string
+	print "length of str is findStringLength(str)"
+	
+end functions
+
+pseudo code:
+
+findStringLengthTest()
+
+
+//c++ code
+
+#include <iostream>
+#include <cstring>
+using std::cout;
+using std::cin;
+using std::getline;
+using std::string;
+
+int findStringLength(const string& str)
+{
+    	return str.length();
+}
+
+void findStringLengthTest(void)
+{
+    	string str;
+    	
+    	cout << "Enter string: ";
+    	getline(cin, str);
+    	
+    	cout << "The length of " << str << " is: " << findStringLength(str);
+}
+
+int main(void)
+{
+    	findStringLengthTest();
+    
+    	return 0;
+}
+
