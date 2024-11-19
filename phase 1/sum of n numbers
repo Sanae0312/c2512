@@ -1,0 +1,61 @@
+// Sum of n natural numbers
+
+//pseudocode
+
+pseudo functions:
+
+function sumOfElements(number -> int)
+	sum = 0 -> int
+	for i = 0..number
+		sum = sum + i
+	end for
+	return sum 
+
+function sumOfElementsTest()
+	input number
+	result = sumOfElements(number)
+	print result
+	
+end functions
+
+pseudo code:
+
+sumOfElementsTest()
+
+
+//c++ code
+
+#include <iostream>
+using std::cout;
+using std::cin;
+
+int sumOfElements(int number)
+{
+    int i;
+    int sum = 0;
+    
+    for(i = 0 ; i <= number ; i++)
+    {
+        sum = sum + i;
+    }
+    
+    return sum;
+}
+
+void sumOfElementsTest(void)
+{
+    int number;
+    
+    cout << "Enter number of terms: ";
+    cin >> number;
+    
+    int result = sumOfElements(number);
+    cout << "Sum of first " << number << " numbers: " << result;
+}
+
+int main(void)
+{
+    sumOfElementsTest();
+    
+    return 0;
+}
