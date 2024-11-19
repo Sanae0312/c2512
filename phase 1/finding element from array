@@ -1,0 +1,76 @@
+//pseudocode
+
+pseudo functions:
+
+function findElement(number -> int, key -> int, arr[] -> int) -> int
+	index -> int
+	for i = 0..number
+		if (arr[i] == key)
+			index = i
+		end if
+	end for
+	return index
+
+function findElementTest()
+	input number
+	for i = 0..number
+		input array
+	end for
+	result = findElement(num, key, arr)
+	print result
+	
+end functions
+	
+pseudo code:
+
+findElementTest()
+
+
+//c++ code
+
+#include <iostream>
+using std::cout;
+using std::cin;
+
+int findElement(int number, int key, int arr[])
+{
+    	int i, index;
+    	
+    	for (i = 0 ; i < number ; i++)
+    	{
+        	if (arr[i] == key)
+        	{
+            		index = i;
+            	}
+    	}
+    	
+    	return index;
+}
+
+void findElementTest(void)
+{
+    	int key, arr[10], number, i;
+    	
+    	cout << "Enter the number of elements: ";
+    	cin >> number;
+    	
+    	cout << "Enter elements: ";
+    	for (i = 0 ; i < number ; i++)
+    	{
+        	cin >> arr[i];
+        }
+        
+    	cout << "The element to find: ";
+    	cin >> key;
+    	
+    	int result = findElement(number, key, arr);
+    	
+    	cout << "The index of element is: " << result;
+}
+
+int main(void)
+{
+    findElementTest();
+
+    return 0;
+}
