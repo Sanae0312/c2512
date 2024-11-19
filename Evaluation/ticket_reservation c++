@@ -57,7 +57,7 @@ int main(void)
 {
     bookingTicketsTest();
     
-    return 0;
+    return EXIT_SUCCESS;
 }
 
 
