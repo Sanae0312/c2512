@@ -1,0 +1,68 @@
+//pseudocode
+
+pseudo functions:
+
+function isPerfectSquare(number -> int) -> bool
+    	root = integer part of sqrt(number)
+    	if (root * root == number)
+        	return true
+        end if
+    	return false
+
+function isPerfectSquareTest()
+    	input number
+    	result = isPerfectSquare(number)
+    	if (result == true)
+        	print "Entered number is a perfect square"
+    	else
+        	print "Entered number is not a perfect square"
+	end if
+	
+end functions
+        
+pseudo code:
+
+isPerfectSquareTest()
+
+
+//c++ code
+
+#include <iostream>
+#include <cmath> 
+using std::cout;
+using std::cin;
+using std::endl;
+
+
+bool isPerfectSquare(int number) 
+{
+	int root = (sqrt(number)); 
+    
+    	return (root * root == number); 
+}
+
+
+void isPerfectSquareTest(void) 
+{
+    	int number;
+    
+    	cout << "Enter a number: ";
+    	cin >> number;
+
+    	bool result = isPerfectSquare(number);
+    	if (result) 
+    	{
+       		cout << number << " is a perfect square" << endl;
+    	} 
+    	else 
+    	{
+        	cout << number << " is not a perfect square" << endl;
+    	}
+}
+
+int main(void) 
+{
+    	isPerfectSquareTest(); 
+    
+    	return 0;
+}
