@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bus Ticket Reservation</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" 
+    integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="ticket_booking.html">Bus booking system</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="ticket_booking_add.html">Ticket booking</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="ticket_booking_edit.html">Edit booking</a>
+              </li>
+            </ul>
+            <div class="d-flex">
+              <button class="btn btn-outline-danger" type="submit">Logout</button>
+            </div>
+          </div>
+        </div>
+      </nav>
+    <div class="container m-5">
+        <h1 class="m-3" >Bus Ticket Reservation</h1>
+        <table class="table table-bordered border-dark">
+            <thead class="table-secondary table-bordered border-dark">
+                <tr>
+                    <th>Booking ID</th>
+                    <th>Customer</th>
+                    <th class="p-6">Schedule</th>
+                    <th>Seat Number</th>
+                    <th>Booking Date</th>
+                    <th>Status</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tr>
+                <td>101</td>
+                <td>Vishak</td>
+                <td>22231-EKM-TVM</td>
+                <td>1</td>
+                <td>12-03-24</td>
+                <td>Booked</td>
+                <td><a class="btn btn-primary" href="ticket_booking_edit.html" role="button">Edit</a>
+                    &nbsp<button class="btn btn-primary">delete</button></td>
+            </tr>
+            <tr>
+                <td>102</td>
+                <td>Ayisha</td>
+                <td>22341-CLT-TVM</td>
+                <td>3</td>
+                <td>22-03-24</td>
+                <td>Booked</td>
+                <td><a class="btn btn-primary" href="ticket_booking_edit.html" role="button">Edit</a>
+                    &nbsp<button class="btn btn-primary">delete</button></td>
+            </tr>
+            <tr>
+                <td>103</td>
+                <td>Nimisha</td>
+                <td>224211-EKM-TVM</td>
+                <td>5</td>
+                <td>10-04-24</td>
+                <td>Not Booked</td>
+                <td><a class="btn btn-primary" href="ticket_booking_edit.html" role="button">Edit</a>
+                    &nbsp<button class="btn btn-primary">delete</button></td>
+            </tr>
+        </table>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" 
+    integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+</body>
+</html>
