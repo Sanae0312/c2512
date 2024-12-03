@@ -1,0 +1,49 @@
+ubuntu@ubuntu-Inspiron-3501:~/c2512/Day14$ mkdir my_cpp_project
+ubuntu@ubuntu-Inspiron-3501:~/c2512/Day14$ cd my_cpp_project
+ubuntu@ubuntu-Inspiron-3501:~/c2512/Day14/my_cpp_project$ nano greet.cpp
+ubuntu@ubuntu-Inspiron-3501:~/c2512/Day14/my_cpp_project$ g++ greet.cpp
+ubuntu@ubuntu-Inspiron-3501:~/c2512/Day14/my_cpp_project$ ./a.out
+Enter a name: Sana
+Hello Sana !!! 
+ubuntu@ubuntu-Inspiron-3501:~/c2512/Day14/my_cpp_project$ cat greet.cpp
+#include<iostream>
+#include<cstdlib>
+
+using std::cout;
+using std::cin;
+using std::endl;
+
+int main() {
+	char name[255];
+	cout << "Enter a name: ";
+	cin >> name;
+	cout << "Hello " << name << " !!! " <<  endl;
+}
+ubuntu@ubuntu-Inspiron-3501:~/c2512/Day14/my_cpp_project$ nano greet.cpp
+ubuntu@ubuntu-Inspiron-3501:~/c2512/Day14/my_cpp_project$ g++ greet.cpp
+ubuntu@ubuntu-Inspiron-3501:~/c2512/Day14/my_cpp_project$ ./a.out
+Enter a name: Sana
+Hello Sana !!! 
+Good Bye Sana !!! 
+ubuntu@ubuntu-Inspiron-3501:~/c2512/Day14/my_cpp_project$ cat greet.cpp
+#include<iostream>
+#include<cstdlib>
+
+using std::cout;
+using std::cin;
+using std::endl;
+
+int main() {
+	char name[255];
+	cout << "Enter a name: ";
+	cin >> name;
+	cout << "Hello " << name << " !!! " <<  endl;
+	cout << "Good Bye " << name << " !!! " << endl;
+}
+ubuntu@ubuntu-Inspiron-3501:~/c2512/Day14/my_cpp_project$ ls
+a.out  greet.cpp
+ubuntu@ubuntu-Inspiron-3501:~/c2512/Day14/my_cpp_project$ rm *
+ubuntu@ubuntu-Inspiron-3501:~/c2512/Day14/my_cpp_project$ ls
+ubuntu@ubuntu-Inspiron-3501:~/c2512/Day14/my_cpp_project$ cd ..
+ubuntu@ubuntu-Inspiron-3501:~/c2512/Day14$ rmdir my_cpp_project
+ubuntu@ubuntu-Inspiron-3501:~/c2512/Day14$ ls
