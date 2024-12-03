@@ -1,4 +1,4 @@
-Linux Architecture 
+LINUX ARCHITECTURE 
 
 1. `Hardware Layer`:  
    - Physical components like CPU, memory, and storage.  
@@ -34,7 +34,7 @@ This layered design ensures stability, flexibility, and security.
 
 ===========================================================================
 
-Linux Shell
+LINUX SHELL
 
 1. `What is a Shell?`  
    - A command-line interface (CLI) 
