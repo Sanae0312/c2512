@@ -1,0 +1,156 @@
+ubuntu@ubuntu-Inspiron-3501:~$ cd c2512
+ubuntu@ubuntu-Inspiron-3501:~/c2512$ mkdir Day14
+ubuntu@ubuntu-Inspiron-3501:~/c2512$ ls
+Day13  Day14
+ubuntu@ubuntu-Inspiron-3501:~/c2512$ cd Day14
+ubuntu@ubuntu-Inspiron-3501:~/c2512/Day14$ mkdir cpp_vi_practice
+ubuntu@ubuntu-Inspiron-3501:~/c2512/Day14$ cd cpp_vi_practice
+ubuntu@ubuntu-Inspiron-3501:~/c2512/Day14/cpp_vi_practice$ vi number_check.cpp
+ubuntu@ubuntu-Inspiron-3501:~/c2512/Day14/cpp_vi_practice$ cat number_check.cpp
+#include<iostream>
+#include<cstdlib>
+
+using std::cout;
+using std::cin;
+using std::endl;
+
+int main() {
+	int number;
+
+	cout << "Enter a number: " << endl;
+	cin >> number;
+
+	if (number > 0) {
+		cout << "The number is positive" << endl;
+	}
+	else if (number < 0) {
+		cout << "The number  is negative" << endl;
+	}
+	else {
+		cout << "The nuber is zero" << endl;
+	}
+
+	return EXIT_SUCCESS;
+}
+	
+
+ubuntu@ubuntu-Inspiron-3501:~/c2512/Day14/cpp_vi_practice$ vi number_check.cpp
+ubuntu@ubuntu-Inspiron-3501:~/c2512/Day14/cpp_vi_practice$ g++ number_check.cpp
+number_check.cpp:8:1: error: ‘string’ does not name a type; did you mean ‘stdin’?
+    8 | string checkPositiveNegative(int number) {
+      | ^~~~~~
+      | stdin
+number_check.cpp:21:1: error: ‘string’ does not name a type; did you mean ‘stdin’?
+   21 | string checkOddOrEven(int number) {
+      | ^~~~~~
+      | stdin
+number_check.cpp: In function ‘int main()’:
+number_check.cpp:40:33: error: ‘checkPositiveNegative’ was not declared in this scope
+   40 |                                 checkPositiveNegative(number);
+      |                                 ^~~~~~~~~~~~~~~~~~~~~
+number_check.cpp:45:33: error: ‘checkOddOrEven’ was not declared in this scope
+   45 |                                 checkOddOrEven(number);
+      |                                 ^~~~~~~~~~~~~~
+number_check.cpp:49:50: error: expected ‘;’ before ‘}’ token
+   49 |                                 cout << "Invalid"
+      |                                                  ^
+      |                                                  ;
+   50 |                         }
+      |                         ~                         
+ubuntu@ubuntu-Inspiron-3501:~/c2512/Day14/cpp_vi_practice$ vi number_check.cpp
+ubuntu@ubuntu-Inspiron-3501:~/c2512/Day14/cpp_vi_practice$ cat number_check.cpp
+#include<iostream>
+#include<cstdlib>
+
+using std::string;
+using std::cout;
+using std::cin;
+using std::endl;
+
+string checkPositiveNegative(int number) {
+	if (number > 0) {
+		return "positive";
+	}
+	else if (number < 0) {
+		return "Negative";
+	}
+	else {
+		return "zero";
+
+	}
+}
+
+string checkOddOrEven(int number) {
+	if ((number % 2) == 0) {
+		return "even";
+	}
+	else {
+		return "odd";
+	}
+}
+
+int main() {
+	int number,choice;
+
+	do {
+		cout << "Enter your choice: ";
+		cin >> choice;
+		switch (choice) {
+			case 1:
+				cout << "Enter a number: " << endl;
+				cin >> number;
+				cout << "The number is " << checkPositiveNegative(number) << endl;
+				break;
+			case 2:
+
+				cout << "Enter a number: " << endl;
+				cin >> number;
+				cout << "The number is " << checkOddOrEven(number) << endl;
+				break;
+			case 3:
+				cout << "Terminating program";
+				break;
+			default:
+				cout << "Invalid";
+				break;
+			}
+	} while(choice!=3);
+		
+
+	return EXIT_SUCCESS;
+}
+	
+ubuntu@ubuntu-Inspiron-3501:~/c2512/Day14/cpp_vi_practice$ vi number_check.cpp
+ubuntu@ubuntu-Inspiron-3501:~/c2512/Day14/cpp_vi_practice$ g++ number_check.cpp
+ubuntu@ubuntu-Inspiron-3501:~/c2512/Day14/cpp_vi_practice$ ./a.out
+Enter your choice: 1
+Enter a number: 
+10
+The number is positive
+Enter your choice: 1
+Enter a number: 
+-10
+The number is Negative
+Enter your choice: 2
+Enter a number: 
+10
+The number is even
+Enter your choice: 2
+Enter a number: 
+3
+The number is odd
+Enter your choice: 3
+Terminating programubuntu@ubuntu-Inspiron-3501:~/c2512/Day14/cpp_vi_practice$ ^C
+
+ubuntu@ubuntu-Inspiron-3501:~/c2512/Day14/cpp_vi_practice$ rm number_check.cpp
+ubuntu@ubuntu-Inspiron-3501:~/c2512/Day14/cpp_vi_practice$ ls
+a.out
+ubuntu@ubuntu-Inspiron-3501:~/c2512/Day14/cpp_vi_practice$ rm *
+ubuntu@ubuntu-Inspiron-3501:~/c2512/Day14/cpp_vi_practice$ ls
+ubuntu@ubuntu-Inspiron-3501:~/c2512/Day14/cpp_vi_practice$ cd ..
+ubuntu@ubuntu-Inspiron-3501:~/c2512/Day14$ rmdir cpp_vi_practice
+ubuntu@ubuntu-Inspiron-3501:~/c2512/Day14$ ls
+	
+
+
+
