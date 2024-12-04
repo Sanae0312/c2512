@@ -1,0 +1,40 @@
+.project-box {
+    position: relative;
+    background-size: cover;
+    background-position: center;
+    height: 300px; /* Fixed height for uniform boxes */
+    color: white;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  .project-box .project-content {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    right: 20px;
+    padding: 20px;
+    background-color: rgba(0, 0, 0, 0.6); /* Semi-transparent overlay for better text readability */
+    border-radius: 10px;
+  }
+  
+  .project-box .project-title {
+    font-size: 24px;
+    font-weight: 700;
+    margin-bottom: 10px;
+  }
+  
+  .project-box .project-description {
+    font-size: 16px;
+  }
+  
+  .project-box:nth-child(1) {
+    background-image: url('assets\img\portfolio\Build-An-Organic-E-commerce-Platform.png'); /* Background image for Project 1 */
+  }
+  
+  .project-box:nth-child(2) {
+    background-image: url('assets/img/projects/project2.jpg'); /* Background image for Project 2 */
+  }
+  
+ 

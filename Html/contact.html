@@ -1,0 +1,96 @@
+<!--contact session-->
+  
+<section id="contact" class="contact section">
+    <div class="container" data-aos="fade-up" data-aos-delay="100">
+      <div class="row justify-content-center text-center">
+        <div class="col-lg-8">
+          <h1 class="section-title">Contact</h1>
+          <p class="section-description">
+            Feel free to reach out to me via any of the methods below or send me a direct message through the form.
+          </p>
+        </div>
+      </div>
+  
+      <div class="row gy-4">
+        <!-- Address Info -->
+        <div class="col-md-4">
+          <div class="info-item d-flex align-items-center" data-aos="fade-up" data-aos-delay="200">
+            <i class="icon bi bi-geo-alt flex-shrink-0"></i>
+            <div>
+              <h3>Address</h3>
+              <p>Elikkottil (H), Kadannamanna (P O), Mankada, Malappuram</p>
+            </div>
+          </div>
+        </div><!-- End Info Item -->
+  
+        <!-- Phone Info -->
+        <div class="col-md-4">
+          <div class="info-item d-flex align-items-center" data-aos="fade-up" data-aos-delay="300">
+            <i class="icon bi bi-telephone flex-shrink-0"></i>
+            <div>
+              <h3>Call Me</h3>
+              <p>
+                <a href="tel:+918078934679" 
+                   onmouseover="this.style.color='green'" 
+                   onmouseout="this.style.color='inherit'">
+                  +91 8078934679
+                </a>
+              </p>
+            </div>
+          </div>
+        </div><!-- End Info Item -->
+  
+        <!-- Email Info -->
+        <div class="col-md-4">
+            <div class="info-item d-flex align-items-center" data-aos="fade-up" data-aos-delay="400">
+              <i class="icon bi bi-envelope flex-shrink-0"></i>
+              <div>
+                <h3>Email</h3>
+                <!-- Make the email clickable with mailto -->
+                <p><a href="https://mail.google.com/mail/?view=cm&fs=1&to=sanamkd2000@gmail.com"
+                    onmouseover="this.style.color='green'" 
+                   onmouseout="this.style.color='inherit'">
+                   sanamkd2000@gmail.com
+                </a>
+            </p>
+              </div>
+            </div>
+          </div><!-- End Info Item -->
+        </div><!-- End Row -->
+  
+      <!-- Contact Form -->
+      <form action="forms/contact.php" method="post" class="php-email-form" data-aos="fade-up" data-aos-delay="600">
+        <div class="row gy-4">
+          <!-- Name Field -->
+          <div class="col-md-6">
+            <input type="text" name="name" class="form-control" placeholder="Your Name" required>
+          </div>
+  
+          <!-- Email Field -->
+          <div class="col-md-6">
+            <input type="email" name="email" class="form-control" placeholder="Your Email" required>
+          </div>
+  
+          <!-- Subject Field -->
+          <div class="col-md-12">
+            <input type="text" name="subject" class="form-control" placeholder="Subject" required>
+          </div>
+  
+          <!-- Message Field -->
+          <div class="col-md-12">
+            <textarea name="message" class="form-control" rows="6" placeholder="Message" required></textarea>
+          </div>
+  
+          <!-- Submit Button -->
+          <div class="col-md-12 text-center">
+            <div class="loading">Loading</div>
+            <div class="error-message"></div>
+            <div class="sent-message">Your message has been sent. Thank you!</div>
+  
+            <button type="submit" class="btn btn-primary">Send Message</button>
+          </div>
+        </div>
+      </form><!-- End Contact Form -->
+  
+    </div><!-- End Container -->
+  </section><!-- End Contact Section -->
