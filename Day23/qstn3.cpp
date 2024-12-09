@@ -28,3 +28,22 @@ using namespace std;
 //Base class:
 class Account
 {
+    protected:
+        char* accountNumber;
+        double balance;
+
+    public:
+        //Constructor
+        Account(const char* accnmbr, double blnc) 
+        {
+            accountNumber = new char[strlen(accnmbr) + 1];
+            strcpy(accountNumber, accnmbr);
+            balance = blnc;
+            cout << "Account constructor called.." << endl;
+        }
+
+        //Destructor
+        virtual ~Account()
+        {
+            cout << "Account destructor called.." << endl;
+
