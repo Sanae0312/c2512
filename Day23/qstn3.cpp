@@ -46,4 +46,72 @@ class Account
         virtual ~Account()
         {
             cout << "Account destructor called.." << endl;
+                       delete[] accountNumber;
+        }
 
+        //Behaviour
+        virtual void deposit(double amount) = 0;
+        
+        virtual void withdraw(double amount) = 0;
+};
+
+//Derived class
+class SavingsAccount : public Account
+{
+    protected:
+        double interestRate;
+
+    public:
+        //Constructor
+         SavingsAccount(const char* accnmbr, double blnc, double rate)
+        : Account(accnmbr, blnc), interestRate(rate) 
+        {
+            cout << "SavingsAccount constructor called.." << endl;
+        }    
+
+        //Destructor
+        ~SavingsAccount()
+        {
+            cout << "SavingsAccount destructor called.." << endl;
+        } 
+
+        void deposit(double amount) override
+        {
+            balance = balance + amount;
+            cout << "Deposited " << amount << 
+            " to account " << accountNumber << ", balance is " << balance << endl;
+        }
+
+        void withdraw(double amount) override
+        {
+            if (balance >= amount)
+            {
+                balance = balance - amount;
+                cout << "Withdrew " << amount << " from account "
+                << accountNumber << ", balance is " << balance << endl;
+            }
+            else 
+            {
+                cout << "Insufficiant balance in account" << endl;
+            }
+        }
+};
+
+int main()
+{
+    Account* acc1 = new SavingsAccount("223432", 55000.55, 10);
+    Account* acc2 = new SavingsAccount("143434", 22000, 5);
+
+    cout << "=== Account 1 ===" << endl;
+    acc1->deposit(500);
+    acc1->withdraw(300);
+
+    cout << "=== Account 2 ===" << endl;
+    acc2->deposit(1000);
+    acc2->withdraw(1500);
+
+    delete acc1;
+    delete acc2;
+
+    return 0;
+}
