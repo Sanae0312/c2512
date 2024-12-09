@@ -128,10 +128,10 @@ int main()
     //Static object for Final Derived Class
     AmphibiousVehicle pav1("Terra", 4, 1500, "LandMode");
     pav1.drive();
-    pav1.steer();
     pav1.sail();
     pav1.switchMode();
-
+    pav1.steer();
+    
     cout << endl;
 
     //Dynamic object for Final Derived Class
