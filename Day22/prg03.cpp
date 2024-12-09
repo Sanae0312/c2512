@@ -20,15 +20,28 @@ class Fraction
 		int numerator;
 		int denominator;
 	public:
-		Fraction(int n_numerator, int d_denominator)
-		{
-			numerator = n_numerator;
-			denominator = d_denominator;
-		}
-		
-		void add(const Fraction& other);
-		void display();
+		Fraction(int numerator, int denominator) : numerator(numerator), denominator(denominator) { }
+
+        friend ostream& operator<<(ostream output, const Fraction& fraction);
+        Fraction operator+(const Fraction& other)
+        {
+            Fraction result(0,1);
+            result.numerator = (this->numerator * other.denominator) + (this->denominator * other.numerator);
+            result.denominator = this->denominator * other.denominator;
+            return result;
+        }
+
+		bool operator<(const Fraction& other) 
+        {
+            return ((float)this->numerator / (float)this->denominator) < ((float)other.numerator / (float)other.denominator);
+        }
 };
+
+ostream& operator<<(ostream& output, const Fraction& fraction) 
+{ 
+    output << fraction.numerator << "/" << fraction.denominator;
+    return output;
+}
 
 Fraction add(const Fraction& other)
 {
