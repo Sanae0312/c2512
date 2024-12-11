@@ -137,9 +137,6 @@ int main()
     //Dynamic object for Final Derived Class
     Vehicle* pav2 = new AmphibiousVehicle("Aqua", 6, 500, "WaterMode");
     pav2->drive();
-    //pav2->steer();
-    //pav2->sail();
-    //pav2->switchMode();
 
     delete pav2;
 
