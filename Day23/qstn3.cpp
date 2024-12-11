@@ -38,7 +38,7 @@ class Account
         {
             accountNumber = new char[strlen(accnmbr) + 1];
             strcpy(accountNumber, accnmbr);
-            balance = blnc;
+            balance = new double(*blnc);
             cout << "Account constructor called.." << endl;
         }
 
@@ -72,6 +72,7 @@ class SavingsAccount : public Account
         //Destructor
         ~SavingsAccount()
         {
+            interestRate = new double(*rate);
             cout << "SavingsAccount destructor called.." << endl;
         } 
 
