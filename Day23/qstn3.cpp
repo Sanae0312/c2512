@@ -25,83 +25,86 @@ Example 3: `Account and SavingsAccount`
 
 using namespace std;
 
-//Base class:
+// Base class:
 class Account
 {
-    protected:
-        char* accountNumber;
-        double balance;
+protected:
+    char* accountNumber;
+    double* balance;
 
-    public:
-        //Constructor
-        Account(const char* accnmbr, double blnc) 
-        {
-            accountNumber = new char[strlen(accnmbr) + 1];
-            strcpy(accountNumber, accnmbr);
-            balance = new double(*blnc);
-            cout << "Account constructor called.." << endl;
-        }
+public:
+    // Constructor
+    Account(const char* accnmbr, double blnc)
+    {
+        accountNumber = new char[strlen(accnmbr) + 1];
+        strcpy(accountNumber, accnmbr);
+        balance = new double;
+        *balance = blnc;
+        cout << "Account constructor called.." << endl;
+    }
 
-        //Destructor
-        virtual ~Account()
-        {
-            cout << "Account destructor called.." << endl;
-                       delete[] accountNumber;
-        }
+    // Destructor
+    virtual ~Account()
+    {
+        cout << "Account destructor called.." << endl;
+        delete[] accountNumber;
+        delete balance;
+    }
 
-        //Behaviour
-        virtual void deposit(double amount) = 0;
-        
-        virtual void withdraw(double amount) = 0;
+    // Pure Virtual Functions
+    virtual void deposit(double amount) = 0;
+    virtual void withdraw(double amount) = 0;
 };
 
-//Derived class
+// Derived class
 class SavingsAccount : public Account
 {
-    protected:
-        double interestRate;
+protected:
+    double* interestRate;
 
-    public:
-        //Constructor
-         SavingsAccount(const char* accnmbr, double blnc, double rate)
-        : Account(accnmbr, blnc), interestRate(rate) 
-        {
-            cout << "SavingsAccount constructor called.." << endl;
-        }    
+public:
+    // Constructor
+    SavingsAccount(const char* accnmbr, double blnc, double rate)
+        : Account(accnmbr, blnc)
+    {
+        interestRate = new double;
+        *interestRate = rate;
+        cout << "SavingsAccount constructor called.." << endl;
+    }
 
-        //Destructor
-        ~SavingsAccount()
-        {
-            interestRate = new double(*rate);
-            cout << "SavingsAccount destructor called.." << endl;
-        } 
+    // Destructor
+    ~SavingsAccount()
+    {
+        cout << "SavingsAccount destructor called.." << endl;
+        delete interestRate;
+    }
 
-        void deposit(double amount) override
+    void deposit(double amount) override
+    {
+        *balance = *balance + amount;
+        cout << "Deposited " << amount << " to account " << accountNumber
+             << ", balance is " << *balance << endl;
+    }
+
+    void withdraw(double amount) override
+    {
+        if (*balance >= amount)
         {
-            balance = balance + amount;
-            cout << "Deposited " << amount << 
-            " to account " << accountNumber << ", balance is " << balance << endl;
+            *balance = *balance - amount;
+            cout << "Withdrew " << amount << " from account " << accountNumber
+                 << ", balance is " << *balance << endl;
         }
-
-        void withdraw(double amount) override
+        else
         {
-            if (balance >= amount)
-            {
-                balance = balance - amount;
-                cout << "Withdrew " << amount << " from account "
-                << accountNumber << ", balance is " << balance << endl;
-            }
-            else 
-            {
-                cout << "Insufficiant balance in account" << endl;
-            }
+            cout << "Insufficient balance in account " << accountNumber << endl;
         }
+    }
 };
 
 int main()
 {
     Account* acc1 = new SavingsAccount("223432", 55000.55, 10);
-    Account* acc2 = new SavingsAccount("143434", 22000, 5);
+    Account* acc2 = new SavingsAccount("143434", 22000.0, 5);
 
     cout << "=== Account 1 ===" << endl;
     acc1->deposit(500);
