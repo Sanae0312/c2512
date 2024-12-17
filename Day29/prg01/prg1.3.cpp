@@ -49,11 +49,11 @@ public:
     int taskCount;  
 
 public:
-    Programmer(int v_id, int v_age, string v_name, string* v_tasks, int v_taskCount)
-        : Employee(v_id, v_age, v_name), taskCount(v_taskCount) {
+    Programmer(int p_id, int p_age, string p_name, string* p_tasks, int p_taskCount)
+        : Employee(p_id, p_age, p_name), taskCount(p_taskCount) {
         tasks = new string[taskCount];   
         for (int i = 0; i < taskCount; i++) {
-            tasks[i] = v_tasks[i];  
+            tasks[i] = p_tasks[i];  
         }
     }
 

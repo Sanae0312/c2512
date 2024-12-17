@@ -1,3 +1,12 @@
+// // Coding Question: 1.1
+//     Employee {id, age, name} //id, age, name are value objects 
+//     Employee e1(101,22,"Athira"),e2(102,23,"Bhagya");
+//     cout << e1 << endl; //101 22 Athira
+//     cout << e2 << endl; //102 23 Bhagya
+//     e1.swap(e2);
+//     cout << e1 << endl; //102 23 Bhagya
+//     cout << e2 << endl; //101 22 Athira
+
 #include <iostream>
 #include <string>
 #include <utility>

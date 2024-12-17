@@ -1,3 +1,5 @@
+//1.2 "id, age, name" as dynamic memory using new and delete 
+
 #include <iostream>
 #include <string>
 #include <utility>

@@ -10,54 +10,61 @@
 #include <vector>  
 using namespace std;
 
-class Employee {
-public:
-    unique_ptr<int> id;      
-    unique_ptr<int> age;    
-    unique_ptr<string> name; 
+class Employee 
+{
+    public:
+        unique_ptr<int> id;      
+        unique_ptr<int> age;    
+        unique_ptr<string> name; 
 
-public:
-    Employee(int v_id, int v_age, string v_name)
-        : id(make_unique<int>(v_id)), age(make_unique<int>(v_age)), name(make_unique<string>(v_name)) {}
+    public:
+        Employee(int v_id, int v_age, string v_name)
+            : id(make_unique<int>(v_id)), age(make_unique<int>(v_age)), name(make_unique<string>(v_name)) {}
 
-    virtual void printDetails()  {
-        cout << *id << " " << *age << " " << *name;
-    }
+        virtual void printDetails()  {
+            cout << *id << " " << *age << " " << *name;
+        }
 
-    virtual void swap(Employee& other) {
-        std::swap(id, other.id);
-        std::swap(age, other.age);
-        std::swap(name, other.name);
-    }
+        virtual void swap(Employee& other) {
+            std::swap(id, other.id);
+            std::swap(age, other.age);
+            std::swap(name, other.name);
+        }
 
     friend ostream& operator<<(ostream& os,  Employee& e);
 };
 
-class Programmer : public Employee {
-public:
-    unique_ptr<string[]> tasks;  
-    unique_ptr<int>taskCount;  
+class Programmer : public Employee 
+{
+    public:
+        unique_ptr<string[]> tasks;  
+        unique_ptr<int>taskCount;  
 
-public:
-    Programmer(int v_id, int v_age, string v_name, string* v_tasks, int v_taskCount)
-        : Employee(v_id, v_age, v_name), taskCount(make_unique<int>(v_taskCount)) {
-        tasks = make_unique<string[]>(*taskCount);
-        for (int i = 0; i < *taskCount; ++i) {
-            tasks[i] = v_tasks[i]; 
+    public:
+        Programmer(int v_id, int v_age, string v_name, string* v_tasks, int v_taskCount)
+            : Employee(v_id, v_age, v_name), taskCount(make_unique<int>(v_taskCount))
+             {
+                tasks = make_unique<string[]>(*taskCount);
+                for (int i = 0; i < *taskCount; ++i)
+                {
+                    tasks[i] = v_tasks[i]; 
+                }
         }
-    }
 
-    void swap(Programmer& other) {
+    void swap(Programmer& other) 
+    {
         std::swap(tasks, other.tasks);
         std::swap(taskCount, other.taskCount);
         
         Employee::swap(other);
     }
 
-    void printDetails() override {
+    void printDetails() override 
+    {
         Employee::printDetails();
         cout << " Tasks: ";
-        for (int i = 0; i < *taskCount; ++i) {
+        for (int i = 0; i < *taskCount; ++i) 
+        {
             cout << tasks[i] << " ";
         }
     }
@@ -65,17 +72,20 @@ public:
     friend ostream& operator<<(ostream& os,  Programmer& p);
 };
 
-ostream& operator<<(ostream& os,  Employee& e) {
+ostream& operator<<(ostream& os,  Employee& e) 
+{
     e.printDetails();
     return os; 
 }
 
-ostream& operator<<(ostream& os, Programmer& p) {
+ostream& operator<<(ostream& os, Programmer& p) 
+{
     p.printDetails();
     return os;  
 }
 
-int main() {
+int main()
+ {
     // Create task array for Programmer 1
     string tasks1[] = {"Task1", "Task2", "Task3"};
     unique_ptr<Employee> p1 = make_unique<Programmer>(101, 22, "Athira", tasks1, 3);
