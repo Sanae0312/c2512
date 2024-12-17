@@ -23,11 +23,7 @@ class Employee
     public:
         Employee(int id, int age, const string& name) : id(id), name(name), age(age) {}
         
-        friend ostream& operator<<(std::ostream &out, const Employee &e) 
-        {
-            out << e.id << " " << e.age << " " << e.name;
-            return out;
-        }
+        friend ostream& operator<<(std::ostream &out, const Employee &e);
         
         void swap(Employee& other)
         {
@@ -36,6 +32,12 @@ class Employee
             std::swap(name,other.name);
         }
 };
+
+ostream& operator<<(std::ostream &out, const Employee &e) 
+{
+    out << e.id << " " << e.age << " " << e.name;
+    return out;
+}
 
 int main()
 {
