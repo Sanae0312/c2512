@@ -23,39 +23,39 @@ class Employee
     public:
         Employee(int id, int age, const string& name) : id(id), name(name), age(age) {}
 
-        Employee(Employee&& other) noexcept
-        : id(other.id), age(other.age), name(std::move(other.name)) 
+        Employee(Employee&& other) 
+        : id(other.id), age(other.age), name(move(other.name)) 
         {
             other.id = 0;
             other.age = 0;
         }
 
-        Employee& operator=(Employee&& other) 
+        Employee& operator=(Employee&& other)  
         {
             if (this != &other) 
             {
                 id = other.id;
                 age = other.age;
-                name = std::move(other.name);
+                name = move(other.name);
                 other.id = 0;
                 other.age = 0;
             }
         return *this;
     }
         
-        friend ostream& operator<<(std::ostream &out, const Employee &e);
+        friend ostream& operator<<(ostream &out, const Employee &employee);
             
         void swap(Employee& other)
         {
-            Employee temp = std::move(*this);  
-            *this = std::move(other);          
-            other = std::move(temp);  
+            Employee temp = move(*this);  
+            *this = move(other);          
+            other = move(temp);  
         }
 };
 
-ostream& operator<<(std::ostream &out, const Employee &e) 
+ostream& operator<<(ostream &out, const Employee &employee) 
 {
-    out << e.id << " " << e.age << " " << e.name;
+    out << employee.id << " " << employee.age << " " << employee.name;
     return out;
 }
 
