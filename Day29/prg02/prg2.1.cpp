@@ -1,13 +1,11 @@
 #include <iostream>
 #include <iomanip>
-
-using namespace std;
-
 #include<vector>
 #include<algorithm>
 #include<string>
 
-// ---SurgeryManager.cpp----
+using namespace std;
+
 class SurgeryManager{
     private:
         vector<string>SurgeryIDs;
@@ -22,18 +20,8 @@ class SurgeryManager{
 
 };
 
-void printMenu() {
-    cout << "\n=== Surgery Management Module ===\n";
-    cout << "1. Create Surgery\n";
-    cout << "2. Display All Surgery\n";
-    cout << "3. Edit Surgery\n";
-    cout << "4. Delete Surgery\n";
-    cout << "5. Exit\n";
-}
-
-// main.cpp
-
-int main(){
+int main()
+{
     SurgeryManager manager;
     int choice; //user choice
 
@@ -43,11 +31,20 @@ int main(){
         cin >> choice;
 
         // Menu-driven functionality
-        switch (choice) {
-            case 1: manager.create();    break;
-            case 2: manager.displayAll();  break;
-            case 3: manager.editById();      break;
-            case 4: manager.deleteById();    break;
+        switch (choice) 
+        {
+            case 1:
+                manager.create();   
+                break;
+            case 2: 
+                manager.displayAll(); 
+                break;
+            case 3: 
+                manager.editById();      
+                break;
+            case 4:
+                manager.deleteById();    
+                break;
             case 5:
                 cout << "Exiting the system. Goodbye!\n";
                 break;
@@ -63,8 +60,8 @@ int main(){
 
 // Creates a new hospital duration and stores details in arrays. 
 
-void SurgeryManager::create(){
-    
+void SurgeryManager::create()
+{
     string SurgeryID;
     int Duration;
 
@@ -72,7 +69,8 @@ void SurgeryManager::create(){
     cin >> SurgeryID;
 
     // Ensure Surgery SurgeryID is unique
-    if (findIndexById(SurgeryID) != -1) {
+    if (findIndexById(SurgeryID) != -1) 
+    {
         cout << "Error: Surgery SurgeryID already exists. Please use a unique SurgeryID.\n";
         return;
     }
@@ -88,8 +86,10 @@ void SurgeryManager::create(){
 
 //  brief Displays all existing surgerys in a tabular format.
 
-    void SurgeryManager::displayAll() {
-    if (SurgeryIDs.empty()){
+    void SurgeryManager::displayAll()
+    {
+    if (SurgeryIDs.empty())
+    {
         cout << "No Surgery available to display.\n";
         return;
     }
@@ -97,7 +97,8 @@ void SurgeryManager::create(){
     cout << "------------------------- \n";
     cout << "|   SURGERYID | Duration |\n";
     cout << "--------------------------\n";
-    for (auto ITER = SurgeryIDs.begin() ; ITER != SurgeryIDs.end() ; ITER++) {
+    for (auto ITER = SurgeryIDs.begin() ; ITER != SurgeryIDs.end() ; ITER++) 
+    {
         cout << "| " << setw(10) << SurgeryIDs[ITER] << " | "
              << setw(9) << Durations[ITER] << " |\n";
     }
@@ -107,9 +108,11 @@ void SurgeryManager::create(){
 // Finds the index of a surgery duration by surgeryid.
 // return Index of the surgery  if found, -1 otherwise.
 
-int SurgeryManager::findIndexById(string& SurgeryID) {
+int SurgeryManager::findIndexById(string& SurgeryID) 
+{
     auto iter = find(SurgeryIDs.begin(),SurgeryIDs.end(),SurgeryID);
-    if(iter != SurgeryIDs.end()){
+    if(iter != SurgeryIDs.end())
+    {
         return distance(SurgeryIDs.begin(),iter);
     }
     return -1;
@@ -117,7 +120,8 @@ int SurgeryManager::findIndexById(string& SurgeryID) {
 
 // Edits an existing hospital duration by SurgeryID.
 
-void SurgeryManager::editById() {
+void SurgeryManager::editById() 
+{
     string SurgeryID;
     cout << "Enter Surgery SurgeryID to edit: ";
     cin >> SurgeryID;
@@ -138,19 +142,32 @@ void SurgeryManager::editById() {
 
 // Deletes an existing Surgery by SurgeryID.
 
-void SurgeryManager::deleteById() {
+void SurgeryManager::deleteById() 
+{
     string SurgeryID;
     cout << "Enter Surgery SurgeryID to delete: ";
     cin >> SurgeryID;
 
     int index = findIndexById(SurgeryID);
-    if (index == -1) {
+    if (index == -1) 
+    {
         cout << "Error: Surgery SurgeryID not found.\n";
         return;
     }
+}
 
     SurgeryIDs.erase(SurgeryIDs.begin()+index);
     Durations.erase(Durations.begin()+index);
 
     cout << "Surgery deleted successfully.\n";
+}
+
+void printMenu()
+{
+    cout << "\n=== Surgery Management Module ===\n";
+    cout << "1. Create Surgery\n";
+    cout << "2. Display All Surgery\n";
+    cout << "3. Edit Surgery\n";
+    cout << "4. Delete Surgery\n";
+    cout << "5. Exit\n";
 }
