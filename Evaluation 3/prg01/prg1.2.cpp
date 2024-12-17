@@ -2,7 +2,6 @@
 
 #include <iostream>
 #include <string>
-#include <utility>
 #include <cstring>
 #include <cstdlib>
 
@@ -22,6 +21,33 @@ class Employee
             this->name = new char[name.length()+1];
             strcpy(this->name, name.c_str());
         }
+
+        Employee(Employee&& other) noexcept
+        : id(other.id), age(other.age), name(other.name)
+        {
+            other.id = nullptr;
+            other.age = nullptr;
+            other.name = nullptr;
+        }
+
+        Employee& operator=(Employee&& other) noexcept
+        {
+            if (this != &other)
+            {
+                delete id;
+                delete age;
+                delete[] name;
+    
+                id = other.id;
+                age = other.age;
+                name = other.name;
+    
+                other.id = nullptr;
+                other.age = nullptr;
+                other.name = nullptr;
+            }
+            return *this;
+        }
         
         ~Employee()
         {
@@ -29,11 +55,7 @@ class Employee
             delete age;
             delete[] name;
         }
-        friend ostream& operator<<(std::ostream &out, const Employee &e) 
-        {
-            out << *e.id << " " << *e.age << " " << e.name;
-            return out;
-        }
+        friend ostream& operator<<(std::ostream &out, const Employee &e);
         
         void swap(Employee& other)
         {
@@ -43,11 +65,18 @@ class Employee
         }
 };
 
+ostream& operator<<(std::ostream &out, const Employee &e) 
+{
+    out << *e.id << " " << *e.age << " " << e.name;
+    return out;
+}
+
 int main()
 {
      Employee e1(101,22,"Athira");
      Employee e2(102,23,"Bhagya");
-     
+
+     cout << "Before swapping.." << endl;
      cout << e1 << endl;
      cout << e2 << endl;
      
@@ -59,5 +88,3 @@ int main()
      
      return EXIT_SUCCESS;
 }
-
-

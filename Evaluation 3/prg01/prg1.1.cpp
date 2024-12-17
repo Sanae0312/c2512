@@ -22,26 +22,49 @@ class Employee
         string name;
     public:
         Employee(int id, int age, const string& name) : id(id), name(name), age(age) {}
-        
-        friend ostream& operator<<(std::ostream &out, const Employee &e) 
+
+        Employee(Employee&& other) noexcept
+        : id(other.id), age(other.age), name(std::move(other.name)) 
         {
-            out << e.id << " " << e.age << " " << e.name;
-            return out;
+            other.id = 0;
+            other.age = 0;
         }
+
+        Employee& operator=(Employee&& other) noexcept 
+        {
+            if (this != &other) 
+            {
+                id = other.id;
+                age = other.age;
+                name = std::move(other.name);
+                other.id = 0;
+                other.age = 0;
+            }
+        return *this;
+    }
         
+        friend ostream& operator<<(std::ostream &out, const Employee &e);
+            
         void swap(Employee& other)
         {
-            std::swap(id,other.id);
-            std::swap(age,other.age);
-            std::swap(name,other.name);
+            Employee temp = std::move(*this);  
+            *this = std::move(other);          
+            other = std::move(temp);  
         }
 };
+
+ostream& operator<<(std::ostream &out, const Employee &e) 
+{
+    out << e.id << " " << e.age << " " << e.name;
+    return out;
+}
 
 int main()
 {
      Employee e1(101,22,"Athira");
      Employee e2(102,23,"Bhagya");
-     
+
+     cout << "Before swapping.." << endl;
      cout << e1 << endl;
      cout << e2 << endl;
      
@@ -53,5 +76,3 @@ int main()
      
      return EXIT_SUCCESS;
 }
-
-
