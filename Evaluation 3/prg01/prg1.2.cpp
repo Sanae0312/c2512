@@ -22,7 +22,7 @@ class Employee
             strcpy(this->name, name.c_str());
         }
 
-        Employee(Employee&& other) noexcept
+        Employee(Employee&& other) 
         : id(other.id), age(other.age), name(other.name)
         {
             other.id = nullptr;
@@ -30,7 +30,7 @@ class Employee
             other.name = nullptr;
         }
 
-        Employee& operator=(Employee&& other) noexcept
+        Employee& operator=(Employee&& other) 
         {
             if (this != &other)
             {
@@ -55,7 +55,7 @@ class Employee
             delete age;
             delete[] name;
         }
-        friend ostream& operator<<(std::ostream &out, const Employee &e);
+        friend ostream& operator<<(std::ostream &out, const Employee &employee);
         
         void swap(Employee& other)
         {
@@ -65,9 +65,9 @@ class Employee
         }
 };
 
-ostream& operator<<(std::ostream &out, const Employee &e) 
+ostream& operator<<(std::ostream &out, const Employee &employee) 
 {
-    out << *e.id << " " << *e.age << " " << e.name;
+    out << *employee.id << " " << *employee.age << " " << employee.name;
     return out;
 }
 
