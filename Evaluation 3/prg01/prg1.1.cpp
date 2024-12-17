@@ -30,7 +30,7 @@ class Employee
             other.age = 0;
         }
 
-        Employee& operator=(Employee&& other) noexcept 
+        Employee& operator=(Employee&& other) 
         {
             if (this != &other) 
             {
