@@ -2,18 +2,19 @@
 
 using namespace std;
 
+template<class T>
 class C2512Stack 
 {
 private:
     static const int _size = 3; 
-    double arr[_size];           
+    T arr[_size];           
     int _top;                    
 
 public:
     // Constructor 
     C2512Stack() : _top(0) {}
 
-    void push(double data)
+    void push(T data)
     {
         if (_top >= _size)
         {
@@ -47,7 +48,7 @@ public:
 
 int main()
 {
-    C2512Stack stack;
+    C2512Stack<double> stack;
 
     stack.push(10.0);
     stack.push(12.0);
