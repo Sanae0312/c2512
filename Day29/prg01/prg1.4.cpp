@@ -8,6 +8,7 @@
 #include <string>
 #include <memory>  
 #include <vector>  
+
 using namespace std;
 
 class Employee 
@@ -18,20 +19,22 @@ class Employee
         unique_ptr<string> name; 
 
     public:
-        Employee(int v_id, int v_age, string v_name)
-            : id(make_unique<int>(v_id)), age(make_unique<int>(v_age)), name(make_unique<string>(v_name)) {}
+        Employee(int e_id, int e_age, string e_name)
+            : id(make_unique<int>(e_id)), age(make_unique<int>(e_age)), name(make_unique<string>(e_name)) {}
 
-        virtual void printDetails()  {
+        virtual void printDetails()  
+        {
             cout << *id << " " << *age << " " << *name;
         }
 
-        virtual void swap(Employee& other) {
+        virtual void swap(Employee& other) 
+        {
             std::swap(id, other.id);
             std::swap(age, other.age);
             std::swap(name, other.name);
         }
 
-    friend ostream& operator<<(ostream& os,  Employee& e);
+    friend ostream& operator<<(ostream& out,  Employee& employee);
 };
 
 class Programmer : public Employee 
@@ -41,15 +44,15 @@ class Programmer : public Employee
         unique_ptr<int>taskCount;  
 
     public:
-        Programmer(int v_id, int v_age, string v_name, string* v_tasks, int v_taskCount)
-            : Employee(v_id, v_age, v_name), taskCount(make_unique<int>(v_taskCount))
+        Programmer(int p_id, int p_age, string p_name, string* p_tasks, int p_taskCount)
+            : Employee(p_id, p_age, p_name), taskCount(make_unique<int>(p_taskCount))
              {
                 tasks = make_unique<string[]>(*taskCount);
                 for (int i = 0; i < *taskCount; ++i)
                 {
-                    tasks[i] = v_tasks[i]; 
+                    tasks[i] = p_tasks[i]; 
                 }
-        }
+            }
 
     void swap(Programmer& other) 
     {
@@ -69,23 +72,23 @@ class Programmer : public Employee
         }
     }
 
-    friend ostream& operator<<(ostream& os,  Programmer& p);
+    friend ostream& operator<<(ostream& out,  Programmer& programmer);
 };
 
-ostream& operator<<(ostream& os,  Employee& e) 
+ostream& operator<<(ostream& out,  Employee& employee) 
 {
-    e.printDetails();
-    return os; 
+    employee.printDetails();
+    return out; 
 }
 
-ostream& operator<<(ostream& os, Programmer& p) 
+ostream& operator<<(ostream& out, Programmer& programmer) 
 {
-    p.printDetails();
-    return os;  
+    programmer.printDetails();
+    return out;  
 }
 
 int main()
- {
+{
     // Create task array for Programmer 1
     string tasks1[] = {"Task1", "Task2", "Task3"};
     unique_ptr<Employee> p1 = make_unique<Programmer>(101, 22, "Athira", tasks1, 3);
