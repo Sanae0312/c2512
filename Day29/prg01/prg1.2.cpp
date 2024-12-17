@@ -29,11 +29,7 @@ class Employee
             delete age;
             delete[] name;
         }
-        friend ostream& operator<<(std::ostream &out, const Employee &e) 
-        {
-            out << *e.id << " " << *e.age << " " << e.name;
-            return out;
-        }
+        friend ostream& operator<<(std::ostream &out, const Employee &e);
         
         void swap(Employee& other)
         {
@@ -42,6 +38,12 @@ class Employee
             std::swap(name,other.name);
         }
 };
+
+ostream& operator<<(std::ostream &out, const Employee &e) 
+{
+    out << *e.id << " " << *e.age << " " << e.name;
+    return out;
+}
 
 int main()
 {
