@@ -1,3 +1,7 @@
+ // 2.1
+ //    change the crud ops with HospitalStay from array of HospitalStay called `stays`
+ //    to vector<HospitalStay> stays.
+
 #include <iostream>
 #include <iomanip>
 #include<vector>
