@@ -18,22 +18,24 @@ class Surgery{
 			this -> Duration = Duration;
 		}
 
-		int getDuration(){ return this -> Duration; };
+		int getDuration() { 
+            return this -> Duration; };
 
 };
 
 int main(){
-	vector<Surgery> vec;
-	vec.emplace_back("ID001", 3);
-	vec.emplace_back("ID002", 2);
-	vec.emplace_back("ID003", 1);
-	vec.emplace_back("ID004", 5);
-	vec.emplace_back("ID005", 4);
+	vector<Surgery> surgeries {
+            Surgery("S001", 3),
+            Surgery("S002", 10),
+            Surgery("S003", 5),
+            Surgery("S004", 12),
+            Surgery("S005", 6)
+        };
 
-	int dur[vec.size()] = {0};
+	int dur[surgeries.size()] = {0};
 	
-	for(int i = 0; i < vec.size(); i++){
-		dur[i] = vec[i].getDuration();
+	for(int i = 0; i < surgeries.size(); i++){
+		dur[i] = surgeries[i].getDuration();
 	}
 
 	
