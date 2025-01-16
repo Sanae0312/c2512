@@ -1,15 +1,11 @@
-
-#include<iostream>
-#include<vector>
-#include<climits>
-#include<string>
-#include<thread>
-#include<algorithm>
-#include<unistd.h>
-#include<sys/msg.h>
-#include<sys/wait.h>
-
-#define MSG_KEY 1234
+#include <iostream>
+#include <vector>
+#include <sys/ipc.h>
+#include <sys/msg.h>
+#include <sys/wait.h>
+#include <cstring>
+#include <string>
+#include <unistd.h>
 
 using namespace std;
 
@@ -26,67 +22,12 @@ public:
     }
 };
 
-struct msg_buffer {
+struct Message {
     long msg_type;
-    int size;
-    int data[1000];
-    int sum;
+    int data[100];
 };
 
-void findSum(int arr[], int& size, int& sum) {
-	for(int i = 0; i < size; i++) {
-		sum = sum + arr[i];
-	}
-}
-
-void client(vector<Surgery>& surgeries, int msgid) {
-    msg_buffer message;
-
-    message.msg_type = 1;
-    message.size = surgeries.size();
-    msgsnd(msgid, &message, sizeof(message),0);
-    cout << "client send size : "<< message.size <<endl;
-
-    message.msg_type = 2;
-    for (int i = 0; i < message.size; i++) {
-        message.data[i] = surgeries[i].getDuration();
-    }
-    msgsnd(msgid, &message, sizeof(message.data), 0);
-    cout << "Client Sent durations: ";
-    for(int i = 0; i<message.size; i++) {
-		cout << " "<<message.data[i] << " ";
-	}
-	cout << endl;
-
-    msgrcv(msgid, &message, sizeof(message), 3, 0);
-     int sum = message.sum;
-
-    cout << "Total sum in client side sent from server : " << sum << endl;
-}
-
-void server(int msgid) {
-
-    msg_buffer message;
-
-    msgrcv(msgid, &message,sizeof(message),1,0);
-    cout << "server received size : "<< message.size <<endl;
-
-    msgrcv(msgid, &message, sizeof(message.data), 2, 0);
-	cout << "new array created in server : ";
-    for(int i = 0; i<message.size; i++){
-		cout << " "<<message.data[i] << " ";
-	}
-    cout <<endl;
-    int sum = 0;
-    findSum(message.data, sum, message.size);
-
-    message.msg_type = 3;
-    message.sum = sum;
-    msgsnd(msgid, &message, sizeof(message), 0);
-    cout << "Sum sent to client : " << message.sum << endl;
-}
-
-int main() {
+void client(int msgid) {
     vector<Surgery> surgeries {
             Surgery("S001", 3),
             Surgery("S002", 10),
@@ -95,27 +36,72 @@ int main() {
             Surgery("S005", 6)
         };
 
-    int msgid = msgget(MSG_KEY, 0666 | IPC_CREAT);
+    int size = surgeries.size();
+    Message msg;
+    msg.msg_type = 1;
 
-    pid_t pid = -1;
-    {
-        pid = fork();
-        if (pid == 0) {
-        client(surgeries, msgid);
-        return 0;
-        }
-    }
-    {
-        pid = fork();
-        if (pid == 0) {
-        server(msgid);
-        return 0;
-        }
+    for (int i = 0; i < size; ++i) {
+        msg.data[i] = surgeries[i].getDuration();
     }
 
+    cout << "Client sending durations: ";
+    for (int i = 0; i < size; ++i) {
+        cout << msg.data[i] << " ";
+    }
+    cout << endl;
+
+    msgsnd(msgid, &msg, sizeof(msg.data), 0);
+
+    int sum;
+    msgrcv(msgid, &msg, sizeof(msg.data), 2, 0);
+    sum = msg.data[0];
+    cout << "Client received sum from server: " << sum << endl;
+}
+
+void server(int msgid) {
+    Message msg;
+    int sum = 0;
+
+    msgrcv(msgid, &msg, sizeof(msg.data), 1, 0);
+
+    cout << "Server received durations: ";
+    for (int i = 0; i < 5; ++i) {
+        cout << msg.data[i] << " ";
+        sum += msg.data[i];
+    }
+    cout << endl;
+
+    cout << "Server calculated sum: " << sum << endl;
+
+    msg.msg_type = 2;
+    msg.data[0] = sum;
+    msgsnd(msgid, &msg, sizeof(msg.data), 0);
+}
+
+int main() {
+    int msgid = msgget(IPC_PRIVATE, 0666 | IPC_CREAT);
+    if (msgid == -1) {
+        perror("Message queue creation failed");
+        return 1;
+    }
+    {
+        int pid = fork();
+        if (pid == 0) {
+            client(msgid);
+            return 0;
+        }
+    }
+    
+    {
+        int pid = fork();
+        if (pid == 0) {
+            server(msgid);
+            return 0;
+        }
+    }
+    wait(nullptr);
     wait(nullptr);
 
     msgctl(msgid, IPC_RMID, nullptr);
-
     return 0;
 }
