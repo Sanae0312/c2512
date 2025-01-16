@@ -12,12 +12,10 @@ class Surgery {
 	private:
 		string surgeryId;
 		int Duration;
-
 	public:
 		Surgery(string surgeryId, int Duration) : surgeryId(surgeryId), Duration(Duration) {}
 		//string GetSurgeryID();
-        int getDuration()
-        {
+        int getDuration() {
 	        return Duration;
         }
 };
