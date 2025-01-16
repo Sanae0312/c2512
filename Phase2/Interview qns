@@ -1,1 +1,411 @@
+INTERVIEW QUESTIONS
+49. Pointers: character pointer, integer pointer, adding characters into an array without using for loop
+Character Pointer:
+A pointer that holds the address of a character variable.
+
+char c = 'A';
+char *ptr = &c;
+cout << *ptr;  // Outputs: A
+
+Integer Pointer:
+A pointer that holds the address of an integer variable.
+
+int num = 10;
+int *ptr = &num;
+cout << *ptr;  // Outputs: 10
+
+Adding Characters to an Array Without a Loop:
+
+char arr[5] = {'A', 'B', 'C', 'D', 'E'};
+------------------------------------------------------------------------------ 
+50. Use strcpy 
+Copies a string from one location to another.
+
+#include <cstring>
+#include <iostream>
+using namespace std;
+
+int main() {
+    char source[] = "Hello";
+    char destination[10];
+    strcpy(destination, source);
+    cout << destination;  // Outputs: Hello
+    return 0;
+}
+------------------------------------------------------------------------------ 
+51. Oops explain each concept using sample code 
+1. Encapsulation: Wrapping data and methods into a single unit (class).
+
+class Person {
+    private:
+        int age;
+    public:
+        void setAge(int a) { age = a; }
+        int getAge() { return age; }
+};
+
+2. Inheritance: Deriving new classes from existing ones.
+
+class Base {
+    public:
+        void display() { cout << "Base class"; }
+};
+class Derived : public Base {};
+
+3. Polymorphism: Behavior change through function overriding.
+
+class Base {
+    public:
+        virtual void display() { cout << "Base"; }
+};
+class Derived : public Base {
+    public:
+        void display() override { cout << "Derived"; }
+};
+
+4. Abstraction: Hiding implementation details using interfaces or abstract classes.
+
+class Abstract {
+    public:
+        virtual void show() = 0;
+};
+class Derived : public Abstract {
+    public:
+        void show() { cout << "Abstract implemented"; }
+};
+------------------------------------------------------------------------------ 
+52. Access specifiers explanation with code 
+Public: Accessible anywhere.
+Private: Accessible only within the class.
+Protected: Accessible in derived classes.
+
+class Base {
+    private:
+        int privateVar;
+    protected:
+        int protectedVar;
+    public:
+        int publicVar;
+};
+-----------------------------------------------------------------------------
+53. Run time polymorphism sample example 
+class Base {
+    public:
+        virtual void display() { cout << "Base class"; }
+};
+class Derived : public Base {
+    public:
+        void display() override { cout << "Derived class"; }
+};
+int main() {
+    Base *b = new Derived();
+    b->display();  // Outputs: Derived class
+}
+-----------------------------------------------------------------------------
+54. How to get the value of a private data member in the inherited subclass.
+Use getter methods in the base class.
+
+class Base {
+    private:
+        int data;
+    public:
+        Base() : data(10) {}
+        int getData() { return data; }
+};
+class Derived : public Base {
+    public:
+        void show() { cout << getData(); }
+};
+-----------------------------------------------------------------------------
+55. Oops - polymorphism- write a code to show polymorphism using base class pointer?
+class Shape {
+    public:
+        virtual void draw() { cout << "Drawing Shape"; }
+};
+class Circle : public Shape {
+    public:
+        void draw() override { cout << "Drawing Circle"; }
+};
+int main() {
+    Shape *shape = new Circle();
+    shape->draw();  // Outputs: Drawing Circle
+}
+-----------------------------------------------------------------------------
+56. Consider a scenario where you are asked to convert image format of different pictures [eg. jpg to png]. How you can design that using oops concept?
+57. Asked to open a recent project and do debugging?
+58. User defined string copy function.
+59. Oops- brief idea about all the subtopics.
+`Abstraction`
+Abstraction focuses on `hiding the implementation details` and 
+showing only the necessary features of an object. 
+`Key Points:`
+- Concerned with `what an object does`, not `how it does it`.
+- Achieved using `abstract classes` or `interfaces`.
+
+Example:
+Imagine a `Car`. As a user, you interact 
+with its features like 
+starting the engine, driving, and braking. 
+You don’t need to understand 
+the internal working of the engine or braking system.
+
+`Encapsulation`
+`Definition:`  
+Encapsulation is the process of `binding data and methods` 
+that operate on the data into a single unit (class) and 
+`restricting direct access` to some of the object’s components. 
+It helps to `protect data` from unauthorized access and modification.
+
+`Key Points:`
+- Concerned with `how data is protected and manipulated`.
+- Achieved using `access modifiers` like `private`, `protected`, and `public`.
+
+Example:
+Imagine a `Bank Account`. Users can deposit or withdraw money, 
+but they cannot directly access or modify the balance. 
+This ensures that all changes to the balance are controlled and validated.
+
+`Inheritance
+`Inheritance` is a mechanism in object-oriented programming (OOP) 
+where a new class (called a derived or child class) is created 
+based on an existing class (called a base or parent class). 
+The derived class inherits the attributes (fields) and 
+behaviors (methods) of the base class and 
+can also introduce new features or override existing ones.
+`Types of Inheritance`
+
+1. `Single Inheritance:`  
+   In single inheritance, a derived class inherits from one base class.
+
+   `Example:`
+   ```cpp
+   class Animal { ... };
+   class Dog : public Animal { ... };
+   ```
+
+2. `Multilevel Inheritance:`  
+   In multilevel inheritance, a derived class inherits from another derived class.
+
+   `Example:`
+   ```cpp
+   class Animal { ... };
+   class Dog : public Animal { ... };
+   class Puppy : public Dog { ... };
+   ```
+
+3. `Multiple Inheritance:`  
+   In multiple inheritance, a class can inherit 
+   from more than one base class. (C++ supports multiple inheritance)
+
+   `Example:`
+   ```cpp
+   class Animal { ... };
+   class Dog { ... };
+   class Puppy : public Animal, public Dog { ... };
+   ```
+
+4. `Hierarchical Inheritance:`  
+   In hierarchical inheritance, 
+   multiple derived classes inherit from a single base class.
+
+   `Example:`
+   ```cpp
+   class Animal { ... };
+   class Dog : public Animal { ... };
+   class Cat : public Animal { ... };
+   ```
+
+5. `Hybrid Inheritance:`  
+   Hybrid inheritance is a combination of two or more types of inheritance.
+
+   `Example:`
+   ```cpp
+   class Animal { ... };
+   class Dog { ... };
+   class Puppy : public Animal, public Dog { ... };
+
+`Polymorphism`
+
+`Definition:`  
+Polymorphism is one of the core concepts of Object-Oriented Programming (OOP) 
+that allows objects to be treated as instances of their parent class. 
+The term polymorphism means "many forms," and 
+it refers to the ability of one function, method, or operator 
+to work in multiple ways depending on the context.
+`Types of Polymorphism`
+
+1. `Compile-time Polymorphism (Static Polymorphism)`:
+   - This type of polymorphism is resolved during compile time.
+   - It occurs when a function or method can behave 
+   in multiple ways based on its parameters, 
+   but this is determined at compile time.
+   - `Method Overloading` and `Operator Overloading` 
+   are examples of compile-time polymorphism.
+
+   `Example:`
+
+   ```cpp
+   #include <iostream>
+   using namespace std;
+
+   class Calculator {
+   public:
+       int add(int a, int b) {
+           return a + b;
+       }
+
+       double add(double a, double b) {
+           return a + b;
+       }
+   };
+
+   int main() {
+       Calculator calc;
+       cout << "Sum of integers: " << calc.add(5, 10) << endl;     // Calls add(int, int)
+       cout << "Sum of doubles: " << calc.add(5.5, 10.5) << endl;   // Calls add(double, double)
+       return 0;
+   }
+   ```
+
+2. `Runtime Polymorphism (Dynamic Polymorphism)`:
+   - This type of polymorphism is resolved at runtime, 
+   usually when the exact method to be called is determined 
+   based on the object type at runtime.
+   - It is achieved through `method overriding` 
+   (inheritance) and `virtual functions`.
+   - It is commonly used with base class pointers or references 
+   that point to derived class objects.
+   
+   `Example:`
+
+   ```cpp
+   #include <iostream>
+   using namespace std;
+
+   class Animal {
+   public:
+       virtual void sound() {  // Virtual function for dynamic binding
+           cout << "Animal makes a sound." << endl;
+       }
+   };
+
+   class Dog : public Animal {
+   public:
+       void sound() override {
+           cout << "Dog barks!" << endl;
+       }
+   };
+
+   class Cat : public Animal {
+   public:
+       void sound() override {
+           cout << "Cat meows!" << endl;
+       }
+   };
+
+   int main() {
+       Animal* animal1 = new Dog();  // Base class pointer to derived class object
+       Animal* animal2 = new Cat();
+
+       animal1->sound();  // Dog's sound() method
+       animal2->sound();  // Cat's sound() method
+
+       delete animal1;
+       delete animal2;
+
+       return 0;
+   }
+-----------------------------------------------------------------------------
+60. Virtual Function Coding
+`Virtual functions` allow a function to be overridden in a derived class. 
+The function is called based on the actual object type at runtime, 
+not the pointer type.
+
+- `Virtual` function allows runtime polymorphism.
+- It must be defined with the `virtual` keyword in the base class.
+
+`Example:`
+```cpp
+class Base {
+public:
+    virtual void show() {
+        std::cout << "Base class show" << std::endl;
+    }
+};
+class Derived : public Base {
+public:
+    void show() override {
+        std::cout << "Derived class show" << std::endl;
+    }
+};
+-----------------------------------------------------------------------------
+61 .Make a dynamic array and add elements using pointer to array.
+int *arr = new int[5];
+for (int i = 0; i < 5; ++i) arr[i] = i;
+delete[] arr;
+-----------------------------------------------------------------------------
+62. Pointer- Explanation
+Pointers store the address of a variable
+-----------------------------------------------------------------------------
+63. Access Specifiers 
+Public: Accessible anywhere.
+Private: Accessible only within the class.
+Protected: Accessible in derived classes.
+
+class Base {
+    private:
+        int privateVar;
+    protected:
+        int protectedVar;
+    public:
+        int publicVar;
+};
+-----------------------------------------------------------------------------
+64. Run time polymorphism coding
+class Base {
+    public:
+        virtual void display() { cout << "Base class"; }
+};
+class Derived : public Base {
+    public:
+        void display() override { cout << "Derived class"; }
+};
+int main() {
+    Base *b = new Derived();
+    b->display();  // Outputs: Derived class
+}
+-----------------------------------------------------------------------------
+65. Did u study threading, sockets? 
+66. How was the training in both Phase 1 and Phase 2?
+67. Which phase did you like most? Why?
+68. What topics did you learn during these two phases?
+69. What is OOPs, and why is it needed?
+Object-Oriented Programming (OOPs) is a programming paradigm based on the concept of "objects," which bundle data and methods together.
+
+Key principles:
+Encapsulation
+Inheritance
+Polymorphism
+Abstraction
+
+Why is it needed?
+Promotes code reusability and modularity.
+Simplifies debugging and maintenance.
+Enables scalable and intuitive program design.
+-----------------------------------------------------------------------------
+70. What is the difference between stack and heap?
+Stack: Memory allocated at compile time.
+
+Heap: Memory allocated at runtime. 
+-----------------------------------------------------------------------------
+71. What is the difference between structure and class?
+Structure: Members are public by default.
+
+Class: Members are private by default.
+-----------------------------------------------------------------------------
+72. Write the syntax of the new operator
+pointerType = new dataType;
+Example:
+int* ptr = new int;
+
 --Qns--
