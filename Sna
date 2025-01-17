@@ -1,0 +1,50 @@
+void Edit() {
+    uiCommon.TitleBar("Admin App > Floor Management > Edit Floor");
+    
+    // Simulate existing floor data (you should replace this with your data retrieval logic)
+    std::map<std::string, std::string> floors = {
+        {"1", "Ground Floor"},
+        {"2", "First Floor"},
+        {"3", "Second Floor"}
+    };
+
+    // Display existing floors
+    if (floors.empty()) {
+        std::cout << "No floors available to edit." << std::endl;
+        uiCommon.PressAnyKey(true);
+        return;
+    }
+
+    std::cout << "Available floors:" << std::endl;
+    for (const auto& floor : floors) {
+        std::cout << "Floor Number: " << floor.first << " - " << floor.second << std::endl;
+    }
+
+    std::string floorNumber;
+    std::cout << "Enter the Floor Number you want to edit: ";
+    std::cin >> floorNumber;
+
+    // Check if the floor exists
+    auto it = floors.find(floorNumber);
+    if (it == floors.end()) {
+        std::cout << "Floor number not found!" << std::endl;
+        uiCommon.PressAnyKey(true);
+        return;
+    }
+
+    // Prompt user to edit details
+    std::string newFloorName;
+    std::cout << "Current Floor Name: " << it->second << std::endl;
+    std::cout << "Enter new Floor Name: ";
+    std::cin.ignore(); // Clear the input buffer
+    std::getline(std::cin, newFloorName);
+
+    // Update the floor details
+    it->second = newFloorName;
+    std::cout << "Floor details updated successfully!" << std::endl;
+
+    // Simulate saving changes (replace with actual save logic)
+    // Example: save to a file or database
+
+    uiCommon.PressAnyKey(true);
+}
