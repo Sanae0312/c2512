@@ -1,0 +1,20 @@
+#include <iostream>
+#include "ui_common.h"
+#include "login.h"
+#include "driver_page.h"
+
+void login() {
+    uiCommon.TitleBar("Login");
+
+    std::string username = uiCommon.in.Str("Enter Username: ");
+    std::string password = uiCommon.in.Str("Enter Password: ");
+
+    if (username == "admin" && password == "admin") { // Dummy validation
+        std::cout << "Login Successful!\n";
+        uiCommon.PressAnyKey();
+        driverPage(username);
+    } else {
+        std::cout << "Invalid Username or Password!\n";
+        uiCommon.PressAnyKey();
+    }
+}
