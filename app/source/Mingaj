@@ -1,0 +1,274 @@
+To show the navigation flow without validations, we can modify the page classes and their methods. The program will allow basic interaction to navigate through the pages by displaying menus and taking input. Here's the updated code:
+
+
+---
+
+Updated Files
+
+main.cpp
+
+#include "login_page.h"
+#include <iostream>
+
+int main() {
+    LoginPage loginPage;
+    loginPage.show();
+    return 0;
+}
+
+
+---
+
+include/login_page.h
+
+#ifndef LOGIN_PAGE_H
+#define LOGIN_PAGE_H
+
+#include "registration_page.h"
+#include "driver_page.h"
+
+class LoginPage {
+public:
+    void show();
+};
+
+#endif // LOGIN_PAGE_H
+
+src/login_page.cpp
+
+#include "login_page.h"
+#include <iostream>
+
+void LoginPage::show() {
+    int choice;
+    std::cout << "=== Login Page ===" << std::endl;
+    std::cout << "1. Login\n2. Register\n3. Exit" << std::endl;
+    std::cout << "Enter your choice: ";
+    std::cin >> choice;
+
+    if (choice == 1) {
+        std::cout << "Login Successful!" << std::endl;
+        DriverPage driverPage;
+        driverPage.show();
+    } else if (choice == 2) {
+        RegistrationPage registrationPage;
+        registrationPage.show();
+    } else {
+        std::cout << "Exiting application. Goodbye!" << std::endl;
+    }
+}
+
+
+---
+
+include/registration_page.h
+
+#ifndef REGISTRATION_PAGE_H
+#define REGISTRATION_PAGE_H
+
+class RegistrationPage {
+public:
+    void show();
+};
+
+#endif // REGISTRATION_PAGE_H
+
+src/registration_page.cpp
+
+#include "registration_page.h"
+#include <iostream>
+#include "login_page.h"
+
+void RegistrationPage::show() {
+    std::cout << "=== Registration Page ===" << std::endl;
+    std::cout << "Driver registered successfully!" << std::endl;
+    std::cout << "Redirecting to login page..." << std::endl;
+    LoginPage loginPage;
+    loginPage.show();
+}
+
+
+---
+
+include/driver_page.h
+
+#ifndef DRIVER_PAGE_H
+#define DRIVER_PAGE_H
+
+#include "reservation_page.h"
+#include "profile_page.h"
+#include "payment_page.h"
+#include "change_password_page.h"
+
+class DriverPage {
+public:
+    void show();
+};
+
+#endif // DRIVER_PAGE_H
+
+src/driver_page.cpp
+
+#include "driver_page.h"
+#include <iostream>
+
+void DriverPage::show() {
+    int choice;
+    std::cout << "=== Driver Home Page ===" << std::endl;
+    std::cout << "1. View Profile\n2. Make Reservation\n3. Pay and Unpark\n4. Change Password\n5. Logout" << std::endl;
+    std::cout << "Enter your choice: ";
+    std::cin >> choice;
+
+    if (choice == 1) {
+        ProfilePage profilePage;
+        profilePage.show();
+    } else if (choice == 2) {
+        ReservationPage reservationPage;
+        reservationPage.show();
+    } else if (choice == 3) {
+        PaymentPage paymentPage;
+        paymentPage.show();
+    } else if (choice == 4) {
+        ChangePasswordPage changePasswordPage;
+        changePasswordPage.show();
+    } else {
+        std::cout << "Logging out. Goodbye!" << std::endl;
+    }
+}
+
+
+---
+
+include/reservation_page.h
+
+#ifndef RESERVATION_PAGE_H
+#define RESERVATION_PAGE_H
+
+class ReservationPage {
+public:
+    void show();
+};
+
+#endif // RESERVATION_PAGE_H
+
+src/reservation_page.cpp
+
+#include "reservation_page.h"
+#include <iostream>
+#include "driver_page.h"
+
+void ReservationPage::show() {
+    std::cout << "=== Reservation Page ===" << std::endl;
+    std::cout << "Reservation successful!" << std::endl;
+    DriverPage driverPage;
+    driverPage.show();
+}
+
+
+---
+
+include/profile_page.h
+
+#ifndef PROFILE_PAGE_H
+#define PROFILE_PAGE_H
+
+class ProfilePage {
+public:
+    void show();
+};
+
+#endif // PROFILE_PAGE_H
+
+src/profile_page.cpp
+
+#include "profile_page.h"
+#include <iostream>
+#include "driver_page.h"
+
+void ProfilePage::show() {
+    std::cout << "=== Profile Page ===" << std::endl;
+    std::cout << "Profile updated successfully!" << std::endl;
+    DriverPage driverPage;
+    driverPage.show();
+}
+
+
+---
+
+include/payment_page.h
+
+#ifndef PAYMENT_PAGE_H
+#define PAYMENT_PAGE_H
+
+class PaymentPage {
+public:
+    void show();
+};
+
+#endif // PAYMENT_PAGE_H
+
+src/payment_page.cpp
+
+#include "payment_page.h"
+#include <iostream>
+#include "driver_page.h"
+
+void PaymentPage::show() {
+    std::cout << "=== Payment Page ===" << std::endl;
+    std::cout << "Payment successful!" << std::endl;
+    DriverPage driverPage;
+    driverPage.show();
+}
+
+
+---
+
+include/change_password_page.h
+
+#ifndef CHANGE_PASSWORD_PAGE_H
+#define CHANGE_PASSWORD_PAGE_H
+
+class ChangePasswordPage {
+public:
+    void show();
+};
+
+#endif // CHANGE_PASSWORD_PAGE_H
+
+src/change_password_page.cpp
+
+#include "change_password_page.h"
+#include <iostream>
+#include "driver_page.h"
+
+void ChangePasswordPage::show() {
+    std::cout << "=== Change Password Page ===" << std::endl;
+    std::cout << "Password changed successfully!" << std::endl;
+    DriverPage driverPage;
+    driverPage.show();
+}
+
+
+---
+
+Steps to Build and Run
+
+1. Set up the directory structure as provided earlier.
+
+
+2. Save the updated files in the respective folders.
+
+
+3. Compile the application:
+
+make
+
+
+4. Run the application:
+
+./parking_app
+
+
+
+This version of the program focuses on navigating through the flow, allowing you to explore the pages and menus. Each action redirects to another page or back to the home menu, showcasing the navigation functionality without validations or complex logic.
+
