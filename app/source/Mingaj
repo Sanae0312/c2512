@@ -272,3 +272,38 @@ make
 
 This version of the program focuses on navigating through the flow, allowing you to explore the pages and menus. Each action redirects to another page or back to the home menu, showcasing the navigation functionality without validations or complex logic.
 
+
+
+
+
+# Compiler
+CXX = g++
+CXXFLAGS = -std=c++17 -Iinclude -Wall
+
+# Source files
+SRC = src/main.cpp \
+      src/login_page.cpp \
+      src/registration_page.cpp \
+      src/driver_page.cpp \
+      src/profile_page.cpp \
+      src/reservation_page.cpp \
+      src/payment_page.cpp \
+      src/change_password_page.cpp
+
+# Object files
+OBJ = $(SRC:.cpp=.o)
+
+# Output binary
+TARGET = parking_app
+
+# Build rules
+all: $(TARGET)
+
+$(TARGET): $(OBJ)
+	$(CXX) $(CXXFLAGS) -o $@ $^
+
+%.o: %.cpp
+	$(CXX) $(CXXFLAGS) -c $< -o $@
+
+clean:
+	rm -f $(OBJ) $(TARGET)
